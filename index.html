@@ -289,12 +289,16 @@ document.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click'
 document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', close));
 overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('open')) close(); });
-window.addEventListener('scroll', () => {
-  const max = document.documentElement.scrollHeight - innerHeight;
-  const pct = max > 0 ? Math.round(scrollY / max * 100) : 0;
+// Capture phase catches scrolling on the window or any inner container (e.g. when embedded).
+document.addEventListener('scroll', (e) => {
+  const el = e.target.nodeType === 1 ? e.target : document.documentElement;
+  if (el === overlay || overlay.contains(el)) return;
+  const max = el.scrollHeight - el.clientHeight;
+  if (max <= 0) return;
+  const pct = Math.min(100, Math.round(el.scrollTop / max * 100));
   chip.textContent = `Scrolled ${pct}% · pop-up at 50%`;
   if (pct >= 50 && !dismissed && !overlay.classList.contains('open')) open();
-}, { passive: true });
+}, { passive: true, capture: true });
 </script>
 </body>
 </html>
