@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swaram Early Years · Homepage wireframe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Kalam:wght@400;700&display=swap">
+<style>
+body{margin:0;background:#F4F3EF;font-family:Inter,system-ui,sans-serif;color:#2B2A27}
+a{color:#2B2A27}a:hover{color:#000}
+*{box-sizing:border-box}
+img{display:block}
+.sec{max-width:1200px;margin:0 auto;padding:72px 24px}
+.band{background:#fff}
+.band>.in{max-width:1152px;margin:0 auto}
+.tag{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.letter{width:40px;height:40px;border-radius:50%;background:#2B2A27;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;flex:none}
+.secname{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#5F5C55}
+.note{font-family:Kalam,cursive;font-size:18px;color:#1D4ED8}
+.vid{background:#3A3935;color:#fff;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:24px}
+.vidchip{font-size:12px;font-weight:700;letter-spacing:.1em;background:#FACC15;color:#2B2A27;padding:4px 10px;border-radius:999px}
+.img{background:#E2E0D9;border:2px dashed #A8A59C;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#5F5C55;font-size:13px;text-align:center;padding:12px}
+.card{background:#fff;border:1.5px solid #CFCCC3;border-radius:16px;padding:20px}
+.line{height:10px;border-radius:5px;background:#D9D6CE}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 22px;border-radius:999px;background:#2B2A27;color:#fff;font-weight:600;font-size:15px;border:0;cursor:pointer;text-decoration:none;font-family:inherit}
+.btn:hover{color:#fff}
+.btn.ghost{background:transparent;color:#2B2A27;border:1.5px solid #2B2A27}
+.field{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#3A3935}
+.field input{height:44px;border:1.5px solid #CFCCC3;border-radius:10px;padding:0 12px;font:inherit;font-weight:400;background:#fff;width:100%}
+h2{font-size:40px;line-height:1.15;margin:0 0 16px;font-weight:700;letter-spacing:-.01em}
+p{margin:0}
+.grid{display:grid;gap:20px}
+.photo{width:100%;object-fit:cover;border-radius:12px}
+header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1.5px solid #CFCCC3}
+footer a{color:#D9D6CE}footer a:hover{color:#fff}
+.colh{color:#fff;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.round{width:44px;height:44px;border-radius:50%;border:1.5px solid #8A877F;display:flex;align-items:center;justify-content:center}
+#chip{position:fixed;left:16px;bottom:16px;z-index:30;background:#fff;border:1.5px solid #CFCCC3;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600}
+#overlay{position:fixed;inset:0;z-index:40;background:rgba(20,20,19,.55);display:none;align-items:center;justify-content:center;padding:16px}
+#overlay.open{display:flex}
+.modal{background:#fff;border-radius:20px;width:100%;max-width:720px;max-height:92vh;overflow:auto;padding:32px;position:relative;animation:up .35s ease}
+@keyframes up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+.close{position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:50%;border:1.5px solid #CFCCC3;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
+@media (max-width:640px){h2{font-size:30px}.big{font-size:24px!important}.why{font-size:32px!important}nav.main{display:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+<div style="max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+<div style="display:flex;align-items:center;gap:10px"><div class="img" style="width:48px;height:48px;border-radius:50%;padding:0;font-size:10px">LOGO</div><strong style="font-size:18px">Swaram Early Years</strong></div>
+<nav class="main" aria-label="Main" style="display:flex;gap:20px;flex-wrap:wrap;font-size:14px;font-weight:500">
+<a href="#about">About</a><a href="#day">A day at Swaram</a><a href="#programs">Programs</a><a href="#teachers">Teachers</a><a href="#founder">Founder</a><a href="#contact">Contact</a>
+</nav>
+<button class="btn" data-open>Enquire now</button>
+</div>
+</header>
+
+<section class="sec" style="padding-top:40px">
+<div class="tag"><div class="letter">A</div><span class="secname">Hero: AI video</span><span class="note">Autoplays muted, loops. Sound toggle in corner.</span></div>
+<div class="vid" style="min-height:min(560px,70vh)">
+<svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8l6 4-6 4z" fill="#fff"/></svg>
+<span class="vidchip">AI VIDEO</span>
+<strong style="font-size:22px">The journey of the Indian education system</strong>
+<span style="font-size:14px;color:#D9D6CE">Children aged 2 to 5 · full-width, edge to edge</span>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-top:32px">
+<p class="big" style="font-size:32px;line-height:1.25;font-weight:600;max-width:760px">Montessori, Waldorf, IB, Cambridge, Homeschooling… but what if your child could experience the best of all worlds?</p>
+<div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn" data-open>Book a school visit</button><a class="btn ghost" href="#day">See a day at Swaram</a></div>
+</div>
+</section>
+
+<section id="day" class="sec band" style="max-width:none"><div class="in">
+<div class="tag"><div class="letter">B</div><span class="secname">A day in the life of Swaram: AI video</span><span class="note">Ref: Instagram reel the school shared</span></div>
+<h2>A day in the life of Swaram</h2>
+<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px">
+<div class="vid" style="min-height:520px">
+<svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10 8l6 4-6 4z" fill="#fff"/></svg>
+<span class="vidchip">AI VIDEO · VERTICAL 9:16</span>
+<strong style="font-size:18px">Day in the life of Swaram</strong>
+<span style="font-size:13px;color:#D9D6CE">Plays as you scroll the timeline</span>
+</div>
+<div id="dayList" style="display:flex;flex-direction:column;gap:10px"></div>
+</div>
+</div></section>
+
+<section id="about" class="sec">
+<div class="tag"><div class="letter">C</div><span class="secname">About us: letter to parents</span><span class="note">Handwritten-style heading, warm photo beside</span></div>
+<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:center">
+<div class="card" style="padding:40px">
+<p class="note" style="font-size:28px;color:#2B2A27;margin-bottom:16px">Dear Parents,</p>
+<p style="font-size:17px;line-height:1.7;margin-bottom:12px">Imagine you are a 3 year old child again. And today is your first day at school. Your favourite teacher welcomes you with warm hugs and high fives…</p>
+<p style="font-size:17px;line-height:1.7;margin-bottom:20px">…you discover the world, one insect at a time.</p>
+<p style="font-size:17px;line-height:1.7;font-weight:600">This is what your child will live through at Swaram.</p>
+<p class="note" style="margin-top:16px">Full letter shown; "Read more" expands on phone.</p>
+</div>
+<div class="img" style="min-height:440px">Photo: teacher welcoming a child at the gate</div>
+</div>
+</section>
+
+<section class="sec" style="background:#2B2A27;color:#fff;max-width:none;text-align:center">
+<div style="max-width:900px;margin:0 auto">
+<div class="tag" style="justify-content:center"><div class="letter" style="background:#FACC15;color:#2B2A27">D</div><span class="secname" style="color:#D9D6CE">Why</span></div>
+<p class="why" style="font-size:48px;line-height:1.2;font-weight:700">We help every child discover their inner voice.</p>
+<p class="note" style="color:#93C5FD;margin-top:16px">Words animate in one by one on scroll</p>
+</div>
+</section>
+
+<section class="sec">
+<div class="tag"><div class="letter">E</div><span class="secname">What: four relationships</span><span class="note">The school's own icons</span></div>
+<h2>Every child builds a relationship with…</h2>
+<div id="whatList" class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))"></div>
+</section>
+
+<section class="sec band" style="max-width:none"><div class="in">
+<div class="tag"><div class="letter">F</div><span class="secname">Highlights / USP</span><span class="note">Each card opens a photo gallery</span></div>
+<h2>Beyond the classroom</h2>
+<div id="uspList" class="grid" style="grid-template-columns:repeat(auto-fit,minmax(210px,1fr))"></div>
+</div></section>
+
+<section class="sec" style="position:relative">
+<div style="position:absolute;top:-2px;left:0;right:0;border-top:3px dashed #1D4ED8"></div>
+<div class="note" style="position:absolute;top:-34px;right:24px;background:#DBEAFE;padding:2px 12px;border-radius:8px">50% scroll: enquiry pop-up opens here</div>
+<div id="programs" class="tag"><div class="letter">G</div><span class="secname">Our programs</span><span class="note">Details pending from school</span></div>
+<h2>Our programs</h2>
+<div id="progList" class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))"></div>
+</section>
+
+<section id="teachers" class="sec band" style="max-width:none"><div class="in">
+<div class="tag"><div class="letter">H</div><span class="secname">Teachers at Swaram</span></div>
+<h2>Teachers who know your child by heart</h2>
+<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-bottom:24px">
+<div class="card" style="text-align:center"><p style="font-size:44px;font-weight:700">1:8</p><p style="font-size:15px;color:#5F5C55">Adult to child ratio</p></div>
+<div class="card" style="text-align:center"><p style="font-size:26px;font-weight:700;margin:12px 0">Home visits</p><p style="font-size:15px;color:#5F5C55">Teachers meet every family at home</p></div>
+</div>
+<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px">
+<div class="img" style="height:180px">Teacher photo</div><div class="img" style="height:180px">Teacher photo</div><div class="img" style="height:180px">Teacher photo</div><div class="img" style="height:180px">Teacher photo</div>
+</div>
+</div></section>
+
+<section id="founder" class="sec">
+<div class="tag"><div class="letter">I</div><span class="secname">Founder's note</span><span class="note">Short version + "Read full note"</span></div>
+<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:center">
+<div class="img" style="min-height:420px">Photo: Lalith Dhanush with children</div>
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:26px;line-height:1.4;font-weight:600">"As a little boy, I always felt I had to perform well in academics to be loved…"</p>
+<p style="font-size:16px;line-height:1.7;color:#3A3935">12 years and 15,000 students later, everything he learned came together as VOICE, woven into Swaram's walls, teachers and everyday moments.</p>
+<p class="note" style="font-size:24px;color:#2B2A27">With love, Lalith Dhanush, Founder</p>
+<div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn ghost" href="#founder">Read full note</a><a class="btn ghost" href="https://www.instagram.com/lalithdhanush/" target="_blank" rel="noopener">Instagram</a></div>
+</div>
+</div>
+</section>
+
+<section class="sec band" style="max-width:none"><div class="in">
+<div class="tag"><div class="letter">J</div><span class="secname">Location</span></div>
+<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px">
+<div class="img" style="min-height:320px">Google Map embed</div>
+<div class="card" style="display:flex;flex-direction:column;gap:12px;justify-content:center">
+<strong style="font-size:22px">Visit us</strong>
+<span style="font-size:15px">[School address]</span>
+<span style="font-size:15px">[Phone] · [Email]</span>
+<span style="font-size:15px">[School hours]</span>
+<a class="btn" href="#contact" style="align-self:flex-start">Get directions</a>
+</div>
+</div>
+</div></section>
+
+<section id="contact" class="sec">
+<div class="tag"><div class="letter">K</div><span class="secname">Contact / enquiry form</span><span class="note">Same form as the pop-up</span></div>
+<h2>Come say hello</h2>
+<form class="card" onsubmit="return false" style="padding:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px 20px">
+<div class="fields" style="display:contents"></div>
+<div style="display:flex;align-items:flex-end"><button class="btn" type="button" style="width:100%">Send enquiry</button></div>
+</form>
+</section>
+
+<footer style="background:#2B2A27;color:#D9D6CE;font-size:15px">
+<div style="max-width:1200px;margin:0 auto;padding:64px 24px 32px">
+<div class="tag"><div class="letter" style="background:#FACC15;color:#2B2A27">L</div><span class="secname" style="color:#D9D6CE">Footer</span><span class="note" style="color:#93C5FD">On every page</span></div>
+<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:40px;padding-bottom:40px;border-bottom:1px solid #5F5C55">
+<div style="display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center;gap:10px"><div style="width:52px;height:52px;border-radius:50%;border:2px dashed #8A877F;display:flex;align-items:center;justify-content:center;font-size:10px">LOGO</div><strong style="font-size:20px;color:#fff">Swaram Early Years</strong></div>
+<p class="note" style="font-size:22px;color:#fff">Where every child discovers their own voice.</p>
+<button class="btn" data-open style="background:#FACC15;color:#2B2A27;align-self:flex-start">Book a school visit</button>
+</div>
+<nav aria-label="Footer" style="display:flex;flex-direction:column;gap:10px">
+<strong class="colh">Explore</strong>
+<a href="#about">About us</a><a href="#day">A day at Swaram</a><a href="#programs">Our programs</a><a href="#teachers">Teachers</a><a href="#founder">Founder's note</a><a href="#contact">Admissions enquiry</a>
+</nav>
+<div style="display:flex;flex-direction:column;gap:10px">
+<strong class="colh">Visit us</strong>
+<span>[School address]</span><span>[School hours, e.g. Mon to Fri]</span><a href="#contact">Get directions</a>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<strong class="colh">Talk to us</strong>
+<span>[Phone number]</span><span>[Email address]</span><span>[WhatsApp]</span>
+<div style="display:flex;gap:10px;margin-top:6px">
+<a class="round" href="https://www.instagram.com/lalithdhanush/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff"/></svg></a>
+<a class="round" href="#contact" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="#fff"/></svg></a>
+</div>
+</div>
+</div>
+<div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:24px;font-size:13px;color:#B5B2AA"><span>© 2026 Swaram Early Years. All rights reserved.</span><span>Privacy policy · 1:8 adult-child ratio</span></div>
+</div>
+</footer>
+
+<div id="chip">Scrolled 0% · pop-up at 50%</div>
+
+<div id="overlay" role="dialog" aria-modal="true" aria-label="Book a school visit">
+<div class="modal">
+<button class="close" aria-label="Close" data-close><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2B2A27" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+<p class="note" style="font-size:24px;color:#2B2A27">Loving what you see?</p>
+<p style="font-size:28px;font-weight:700;margin:4px 0 6px">Book a visit to Swaram</p>
+<p style="font-size:15px;color:#5F5C55;margin-bottom:20px">Share a few details and we'll call you to plan your visit.</p>
+<div class="fields" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px 18px"></div>
+<button class="btn" type="button" data-close style="width:100%;margin-top:20px">Send enquiry</button>
+</div>
+</div>
+
+<script>
+const day = [
+  ['01 · Arrival','Warm welcome','Hugs, high fives, bags away','Clip'],
+  ['02 · Movement','Play outdoors','Sandpit and garden area','Sandpit photo','images/sandpit1.png'],
+  ['03 · Visual work','Plan your day','Children map their own day','Clip'],
+  ['04 · Circle time','Circle time','Songs, sharing, talking','Reel clip'],
+  ['05 · Fruit break','Fruit break','Eating together','Photo','images/fruit.png'],
+  ['06 · Sensory play','Sensory play','Magic sand: touch, mix, explore','Photo','images/movement3.png'],
+  ['07 · Arts','Dance, theatre, paint, draw','Express in many ways','Clip'],
+  ['08 · Lunch','Lunch','Home-style meals','Photo'],
+  ['09 · Story time','Story time','Stories and little letters','Photo'],
+  ['10 · Free play','Free play','Their own way, their own pace','Clip','images/freeplay.webp']
+];
+document.getElementById('dayList').innerHTML = day.map(([n,t,s,m,img]) => `
+  <div class="card" style="display:flex;gap:16px;align-items:center;padding:12px 16px">
+    ${img ? `<img src="${img}" alt="${t}" style="width:88px;height:64px;flex:none;object-fit:cover;border-radius:12px">`
+          : `<div class="img" style="width:88px;height:64px;flex:none;font-size:11px;padding:4px">${m}</div>`}
+    <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+      <span style="font-size:12px;font-weight:700;color:#5F5C55">${n}</span>
+      <strong style="font-size:16px">${t}</strong>
+      <span style="font-size:13px;color:#5F5C55">${s}</span>
+    </div>
+  </div>`).join('');
+
+const what = ['Self','Nature','Society','Career'];
+document.getElementById('whatList').innerHTML = what.map(t => `
+  <div class="card" style="display:flex;flex-direction:column;gap:14px;min-height:220px">
+    <img src="images/icon-${t.toLowerCase()}.jpg" alt="${t} icon" style="width:96px;height:96px;object-fit:contain;border-radius:16px;background:#F7F1E3">
+    <strong style="font-size:22px">${t}</strong>
+    <div class="line" style="width:90%"></div><div class="line" style="width:70%"></div>
+    <span style="font-size:12px;color:#5F5C55">[Description to come from school]</span>
+  </div>`).join('');
+
+const usp = [
+  ['Nature play','animals, farming, nature walks','nature1.jpg','nature2.jpg'],
+  ['Indian culture','idol making, Yakshagana, festivals','culture1.webp','culture2.jpg'],
+  ['Field visits','fire station, bamboo craft, biscuit factory','field1.jpg','field2.jpg'],
+  ['Creative play','blocks, Anji Play, messy painting','anji.jpg','creative2.jpg'],
+  ['Swaram Studio','Tala music, theatre, child care']
+];
+document.getElementById('uspList').innerHTML = usp.map(([t,p,a,b]) => `
+  <div class="card" style="display:flex;flex-direction:column;gap:12px;padding:14px">
+    ${a ? `<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px">
+             <img class="photo" src="images/${a}" alt="${t}" style="height:180px"><img class="photo" src="images/${b}" alt="${t}" style="height:180px"></div>`
+        : `<div class="img" style="height:180px">Photos needed: ${p}</div>`}
+    <strong style="font-size:18px">${t}</strong>
+    <span style="font-size:13px;color:#5F5C55">${p}</span>
+  </div>`).join('');
+
+document.getElementById('progList').innerHTML = ['[Program 1, e.g. Playgroup]','[Program 2, e.g. Nursery]','[Program 3, e.g. Kindergarten]'].map(t => `
+  <div class="card" style="display:flex;flex-direction:column;gap:12px">
+    <div class="img" style="height:160px">Program photo</div>
+    <strong style="font-size:20px">${t}</strong>
+    <span style="font-size:14px;color:#5F5C55">[Age group] · [Timings] · [Days]</span>
+    <div class="line" style="width:85%"></div>
+    <a href="#contact" style="font-weight:600;font-size:14px">Enquire about this program</a>
+  </div>`).join('');
+
+const fields = [["Father's name",'text'],["Mother's name",'text'],['Email ID','email'],["Father's phone number",'tel'],["Mother's phone number",'tel'],["Father's occupation",'text'],["Mother's occupation",'text'],["Child's name",'text'],["Child's date of birth",'date']];
+document.querySelectorAll('.fields').forEach(el => {
+  el.innerHTML = fields.map(([l,t]) => `<label class="field">${l}<input type="${t}"></label>`).join('');
+});
+
+const overlay = document.getElementById('overlay'), chip = document.getElementById('chip');
+let dismissed = false;
+const open = () => overlay.classList.add('open');
+const close = () => { overlay.classList.remove('open'); dismissed = true; };
+document.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', open));
+document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', close));
+overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('open')) close(); });
+window.addEventListener('scroll', () => {
+  const max = document.documentElement.scrollHeight - innerHeight;
+  const pct = max > 0 ? Math.round(scrollY / max * 100) : 0;
+  chip.textContent = `Scrolled ${pct}% · pop-up at 50%`;
+  if (pct >= 50 && !dismissed && !overlay.classList.contains('open')) open();
+}, { passive: true });
+</script>
+</body>
+</html>
