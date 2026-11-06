@@ -107,9 +107,13 @@
     var inEditor = /framercanvas\.com$|(^|\.)framer\.com$/.test(window.parent.location.hostname);
     if (!inEditor && window.frameElement && window.parent && window.parent.document) {
       win = window.parent; doc = win.document;
-      var fe = window.frameElement, el = fe;
-      for (var i = 0; i < 6 && el && el !== doc.body; i++) { el.style.pointerEvents = "none"; el = el.parentElement; }
-      fe.style.display = "none";
+      // hide only Framer's full-screen holder for this Embed (the nearest fixed-position box), nothing else
+      var fe = window.frameElement, el = fe.parentElement, holder = null;
+      for (var i = 0; i < 6 && el && el !== doc.body; i++) {
+        if (win.getComputedStyle(el).position === "fixed") { holder = el; break; }
+        el = el.parentElement;
+      }
+      (holder || fe).style.display = "none";
     }
   } catch (e) { win = window; doc = document; }
   if (doc.getElementById("swi-on")) return;          // already running on this page
