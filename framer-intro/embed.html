@@ -103,7 +103,9 @@
   var src = document.getElementById("swi");
   if (!src) return;
   try {
-    if (window.frameElement && window.parent && window.parent.document) {
+    // inside the Framer editor canvas, stay in the box so the canvas stays editable
+    var inEditor = /framercanvas\.com$|(^|\.)framer\.com$/.test(window.parent.location.hostname);
+    if (!inEditor && window.frameElement && window.parent && window.parent.document) {
       win = window.parent; doc = win.document;
       var fe = window.frameElement, el = fe;
       for (var i = 0; i < 6 && el && el !== doc.body; i++) { el.style.pointerEvents = "none"; el = el.parentElement; }
