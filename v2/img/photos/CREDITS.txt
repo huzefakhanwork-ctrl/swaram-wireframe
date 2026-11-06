@@ -1,0 +1,19 @@
+Photos in this folder come from Pexels (https://www.pexels.com) under the Pexels License:
+free for commercial use, no attribution required, may be modified. Do not sell them unaltered
+or imply the people shown endorse Swaram.
+
+day-morning.webp   https://www.pexels.com/photo/29279438/
+day-circle.webp    https://www.pexels.com/photo/20556421/
+day-arts.webp      https://www.pexels.com/photo/1720186/
+day-lunch.webp     https://www.pexels.com/photo/35671829/
+iv-self.webp       https://www.pexels.com/photo/29622320/
+iv-nature.webp     https://www.pexels.com/photo/26316198/
+iv-society.webp    https://www.pexels.com/photo/34581269/
+iv-career.webp     https://www.pexels.com/photo/40282972/
+pg-toddlers.webp   https://www.pexels.com/photo/30279471/
+pg-prek.webp       https://www.pexels.com/photo/31864396/
+pg-k1.webp         https://www.pexels.com/photo/40282979/
+pg-k2.webp         https://www.pexels.com/photo/31864402/
+
+Replace any of them with Swaram's own photos later: keep the same file name, or change the src in home.html.
+dear-parents.webp  https://www.pexels.com/photo/3920704/
