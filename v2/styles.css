@@ -594,3 +594,24 @@ body.is-loading { overflow: hidden; }
 .hero-slides img.on { opacity: 1; transform: scale(1); }
 @media (prefers-reduced-motion: reduce) { .hero-slides img { transition: opacity .6s ease; transform: none; } }
 .hero-slides + .hero-shade { background: linear-gradient(180deg, rgba(10,18,28,.45) 0%, rgba(10,18,28,.05) 28%, rgba(10,18,28,.3) 50%, rgba(10,18,28,.82) 100%); }
+
+/* ===== enquiry form (inline in Visit + pop-up) ===== */
+.wform .err { color: #c62828; font-size: 12px; margin-top: 3px; }
+.wform .err:empty { display: none; }
+.wform .msg { margin: 0; font-size: 14px; }
+.wform .msg:empty { display: none; }
+.wform button.send[disabled] { opacity: .6; cursor: wait; }
+.wform input:focus { outline: none; border-color: var(--red); box-shadow: 0 0 0 3px rgba(255,26,26,.12); }
+.wform .done { padding: 18px 0; }
+.wform .done .script { font-size: 34px; margin: 0; }
+.wform .done h3 { font: 600 24px/1.2 var(--sans); margin: 4px 0 6px; }
+.swq { position: fixed; inset: 0; z-index: 1000; display: none; align-items: center; justify-content: center; padding: 16px; background: rgba(20,20,20,.55); }
+.swq.open { display: flex; animation: swqFade .25s ease; }
+.swq-card { position: relative; width: min(640px, 100%); max-height: calc(100vh - 32px); max-height: calc(100svh - 32px); overflow: auto; background: var(--paper, #fff); border-radius: 24px; padding: 30px 30px 26px; box-shadow: 0 30px 80px rgba(0,0,0,.25); animation: swqUp .45s cubic-bezier(.34,1.56,.64,1); }
+.swq-x { position: absolute; top: 12px; right: 12px; width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgba(0,0,0,.06); font-size: 22px; line-height: 1; cursor: pointer; color: var(--ink); }
+.swq-hi { font-size: 28px; margin: 0; }
+.swq-card h2 { font: 600 clamp(26px, 3.6vw, 34px)/1.05 var(--sans); letter-spacing: -.03em; margin: 2px 0 6px; }
+.swq-lead { margin: 0 0 18px; color: #555; }
+@keyframes swqFade { from { opacity: 0; } }
+@keyframes swqUp { from { transform: translateY(30px) scale(.97); opacity: 0; } }
+@media (max-width: 560px) { .swq-card { padding: 26px 18px 20px; } .swq .wform .grid { grid-template-columns: 1fr; } }
