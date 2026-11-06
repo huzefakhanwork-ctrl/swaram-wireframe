@@ -1,0 +1,205 @@
+<!-- Swaram enquiry pop-up + one-page navigation for Framer. Paste into an Embed (HTML) on the Home page, Fixed, 10x10.
+     - Opens once per visit at 50% scroll, and from every "Book a visit" / "Schedule a Tour" / "Read our story" / Contact link.
+     - Sends to the "Swaram enquiry" form in the Swaram Wix dashboard.
+     - Nav and footer links scroll to sections on this page instead of opening other pages. -->
+<template id="swf-tpl">
+<style>
+#swf{--ink:#141414;--lime:#DCF05C;position:fixed;inset:0;z-index:2147482000;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(20,20,20,.55);font-family:Inter,system-ui,sans-serif;color:var(--ink)}
+#swf.open{display:flex;animation:swfFade .25s ease}
+#swf *{box-sizing:border-box}
+#swf .card{position:relative;width:min(640px,100%);max-height:calc(100vh - 32px);overflow:auto;background:#fff;border-radius:28px;padding:34px 30px 28px;box-shadow:0 30px 80px rgba(0,0,0,.25);animation:swfUp .45s cubic-bezier(.34,1.56,.64,1)}
+#swf .x{position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:50%;border:0;background:#F3F1EC;font-size:22px;line-height:1;cursor:pointer}
+#swf .eyebrow{margin:0;font:600 13px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#7a756c}
+#swf h2{margin:6px 0 6px;font:800 clamp(26px,4vw,36px)/1.05 Inter,sans-serif;letter-spacing:-.03em}
+#swf .lead{margin:0 0 20px;color:#666;font-size:15px}
+#swf form{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}
+#swf label{display:block;font:600 12px Inter,sans-serif;margin-bottom:5px}
+#swf .wide{grid-column:1/-1}
+#swf input{width:100%;font:15px Inter,sans-serif;padding:12px 14px;border:1.5px solid #e2ded5;border-radius:14px;background:#FBFAF7;color:var(--ink)}
+#swf input:focus{outline:none;border-color:var(--ink);background:#fff}
+#swf .err{color:#c62828;font-size:12px;min-height:0;margin-top:3px}
+#swf button.send{grid-column:1/-1;justify-self:start;display:inline-flex;align-items:center;gap:10px;font:700 16px Inter,sans-serif;background:var(--lime);color:var(--ink);border:0;border-radius:99px;padding:15px 26px;cursor:pointer;margin-top:6px}
+#swf button.send[disabled]{opacity:.6;cursor:wait}
+#swf .msg{grid-column:1/-1;margin:0;font-size:14px}
+#swf .done{text-align:center;padding:30px 6px}
+#swf .done h2{margin-bottom:10px}
+@keyframes swfFade{from{opacity:0}}
+@keyframes swfUp{from{transform:translateY(30px) scale(.97);opacity:0}}
+@media (max-width:560px){#swf form{grid-template-columns:1fr}#swf .card{padding:28px 18px 22px;border-radius:22px}}
+</style>
+<div id="swf" role="dialog" aria-modal="true" aria-labelledby="swf-title">
+  <div class="card">
+    <button class="x" type="button" aria-label="Close">×</button>
+    <div class="body">
+      <p class="eyebrow">Loving what you see?</p>
+      <h2 id="swf-title">Book a visit to Swaram</h2>
+      <p class="lead">Share a few details and we'll call you to plan your visit.</p>
+      <form novalidate>
+        <div><label for="swf-fn">Father's name *</label><input id="swf-fn" name="father_name_tuq0x9" required autocomplete="name"><div class="err"></div></div>
+        <div><label for="swf-mn">Mother's name *</label><input id="swf-mn" name="mother_name_2spxvk" required><div class="err"></div></div>
+        <div><label for="swf-fp">Father's phone number *</label><input id="swf-fp" name="father_phone_bf2vjx" type="tel" required data-phone placeholder="98765 43210" autocomplete="tel"><div class="err"></div></div>
+        <div><label for="swf-mp">Mother's phone number</label><input id="swf-mp" name="mother_phone_556m0y" type="tel" data-phone placeholder="98765 43210"><div class="err"></div></div>
+        <div><label for="swf-fo">Father's occupation</label><input id="swf-fo" name="father_occupation_grjoxo"><div class="err"></div></div>
+        <div><label for="swf-mo">Mother's occupation</label><input id="swf-mo" name="mother_occupation_ux4cjm"><div class="err"></div></div>
+        <div><label for="swf-cn">Child's name *</label><input id="swf-cn" name="child_name_axfoeh" required><div class="err"></div></div>
+        <div><label for="swf-cd">Child's date of birth *</label><input id="swf-cd" name="child_dob_mshtv9" type="date" required><div class="err"></div></div>
+        <div class="wide"><label for="swf-em">Email ID *</label><input id="swf-em" name="email_pquo1c" type="email" required data-email autocomplete="email" placeholder="you@example.com"><div class="err"></div></div>
+        <button class="send" type="submit">Send enquiry <span aria-hidden="true">→</span></button>
+        <p class="msg" role="status"></p>
+      </form>
+    </div>
+  </div>
+</div>
+</template>
+
+<script>
+(function () {
+  /* run on the real page (Framer puts Embed code in its own frame) */
+  var win = window, doc = document;
+  try {
+    var inEditor = /framercanvas\.com$|(^|\.)framer\.com$/.test(window.parent.location.hostname);
+    if (inEditor) return;                                  // do nothing inside the Framer editor
+    if (window.frameElement && window.parent.document) {
+      win = window.parent; doc = win.document;
+      var el = window.frameElement.parentElement, holder = null;
+      for (var i = 0; i < 6 && el && el !== doc.body; i++) { if (win.getComputedStyle(el).position === "fixed") { holder = el; break; } el = el.parentElement; }
+      (holder || window.frameElement).style.display = "none";
+    }
+  } catch (e) { win = window; doc = document; }
+  if (doc.getElementById("swf")) return;
+
+  var tpl = document.getElementById("swf-tpl");
+  var frag = doc.importNode(tpl.content, true);
+  doc.body.appendChild(frag);
+  var box = doc.getElementById("swf"), form = box.querySelector("form"), msg = box.querySelector(".msg");
+  var FORM_ID = "2ab3223f-e514-4bc0-a72b-2b7fb319884c", CLIENT_ID = "c4e9078a-3b2d-4b7b-8b00-d4a29d9c2c05";
+  var lastFocus = null;
+
+  function open() {
+    lastFocus = doc.activeElement;
+    box.classList.add("open");
+    doc.documentElement.style.overflow = "hidden";
+    try { win.sessionStorage.setItem("swf-seen", "1"); } catch (e) {}
+    var first = box.querySelector("input"); if (first) win.setTimeout(function () { first.focus(); }, 60);
+  }
+  function close() {
+    box.classList.remove("open");
+    doc.documentElement.style.overflow = "";
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  box.querySelector(".x").addEventListener("click", close);
+  box.addEventListener("click", function (e) { if (e.target === box) close(); });
+  doc.addEventListener("keydown", function (e) { if (e.key === "Escape" && box.classList.contains("open")) close(); });
+  win.SwaramForm = { open: open, close: close };
+
+  /* 50% scroll: once per visit, and never while the sketchbook intro is showing */
+  function seen() { try { return win.sessionStorage.getItem("swf-seen") === "1"; } catch (e) { return false; } }
+  win.addEventListener("scroll", function () {
+    if (seen() || box.classList.contains("open") || doc.getElementById("swi")) return;
+    var h = doc.documentElement.scrollHeight - win.innerHeight;
+    if (h > 0 && win.pageYOffset / h >= 0.5) open();
+  }, { passive: true });
+
+  /* one-page site: links scroll to sections here; only the form opens anything */
+  function heading(txt) {
+    txt = txt.toLowerCase();
+    return [].slice.call(doc.querySelectorAll("h1,h2,h3")).filter(function (h) { return h.textContent.trim().toLowerCase().indexOf(txt) === 0; })[0];
+  }
+  function go(txt) {
+    var h = heading(txt); if (!h) return;
+    win.scrollTo({ top: h.getBoundingClientRect().top + win.pageYOffset - 110, behavior: "smooth" });
+  }
+  var FORM_TEXT = /book a visit|schedule a tour|read our story|opening soon|enquire|contact/i;
+  doc.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a,button");
+    if (!a || box.contains(a) || (doc.getElementById("swi") && doc.getElementById("swi").contains(a))) return;
+    var href = (a.getAttribute("href") || "").replace(/^\.\//, "/");
+    var text = a.textContent.trim();
+    var target = a.getAttribute("data-swf-go");
+    if (target) { e.preventDefault(); e.stopPropagation(); if (target === "form") open(); else go(target); return; }
+    if (FORM_TEXT.test(text) || /^\/contact/.test(href)) { e.preventDefault(); e.stopPropagation(); open(); return; }
+    if (/^\/about/.test(href)) { e.preventDefault(); e.stopPropagation(); go("Dear Parents"); return; }
+    if (/^\/programs/.test(href)) { e.preventDefault(); e.stopPropagation(); go("Our Programs"); return; }
+  }, true);
+
+  /* rename the template's nav links to this page's sections, and turn "Read our story" into the form */
+  var NAV = [["Our story", "Dear Parents"], ["Programs", "Our Programs"], ["A day", "A Day at Swaram"], ["Highlights", "Highlights"], ["Teachers", "Teachers at Swaram"]];
+  function setText(a, label) {
+    // Framer's animated links repeat the label in two layers: change every text layer, keep the structure
+    var leaves = [].slice.call(a.querySelectorAll("*")).filter(function (n) { return n.children.length === 0 && n.textContent.trim(); });
+    if (!leaves.length) { a.textContent = label; return; }
+    leaves.forEach(function (n) { n.textContent = label; });
+  }
+  function fixLinks() {
+    // header navs: the group holding About / Programs / Contact
+    var navLinks = [].slice.call(doc.querySelectorAll('a[href="./about"], a[href="./programs"], a[href="./contact"]')).filter(function (a) {
+      var t = a.textContent.replace(/\s+/g, "");
+      return /^(About){1,2}$|^(Programs){1,2}$|^(Contact){1,2}$/.test(t);
+    });
+    var groups = [];
+    navLinks.forEach(function (a) { var p = a.parentElement; while (p && p.querySelectorAll('a[href="./about"],a[href="./programs"],a[href="./contact"]').length < 3) p = p.parentElement; if (p && groups.indexOf(p) < 0) groups.push(p); });
+    groups.forEach(function (g) {
+      if (g.dataset.swfNav) return; g.dataset.swfNav = "1";
+      var links = [].slice.call(g.querySelectorAll('a[href="./about"],a[href="./programs"],a[href="./contact"]'));
+      var tplLink = links[0], holder = tplLink.parentElement === g ? null : tplLink.parentElement;
+      var unit = holder && holder.parentElement === links[1].parentElement.parentElement ? holder : tplLink; // the repeating piece
+      var parent = unit.parentElement;
+      // make enough copies for every section
+      var units = [].slice.call(parent.children).filter(function (c) { return c === unit || c.contains(unit) || (c.querySelector && c.querySelector('a[href="./about"],a[href="./programs"],a[href="./contact"]')) || /^(A)$/.test(c.tagName) && /about|programs|contact/.test(c.getAttribute("href") || ""); });
+      while (units.length < NAV.length) { var c = units[units.length - 1].cloneNode(true); units[units.length - 1].after(c); units.push(c); }
+      units.forEach(function (u, i) {
+        var a = u.tagName === "A" ? u : u.querySelector("a");
+        if (!a) return;
+        if (i >= NAV.length) { u.style.display = "none"; return; }
+        setText(a, NAV[i][0]); a.setAttribute("data-swf-go", NAV[i][1]); a.setAttribute("href", "#");
+      });
+    });
+    // "Read our story" becomes "Book a visit"
+    [].forEach.call(doc.querySelectorAll('a[href="./about"]'), function (a) {
+      if (/read our story/i.test(a.textContent)) { setText(a, "Book a visit"); a.setAttribute("data-swf-go", "form"); a.setAttribute("href", "#"); }
+    });
+    // footer "About Us" -> our story
+    [].forEach.call(doc.querySelectorAll('a[href="./about"]'), function (a) {
+      if (/about us/i.test(a.textContent)) { setText(a, "Our story"); a.setAttribute("data-swf-go", "Dear Parents"); a.setAttribute("href", "#"); }
+    });
+  }
+  fixLinks();
+  new win.MutationObserver(function () { fixLinks(); }).observe(doc.body, { childList: true, subtree: true });
+
+  /* validate + send to the Swaram enquiry form */
+  function phone(v) { var d = v.replace(/[^\d+]/g, ""); if (/^\d{10}$/.test(d)) d = "+91" + d; if (/^91\d{10}$/.test(d)) d = "+" + d; return d; }
+  function check(inp) {
+    var v = inp.value.trim(), m = "";
+    if (inp.required && !v) m = "Please fill this in.";
+    else if (v && inp.hasAttribute("data-email") && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) m = "Enter an email like name@example.com.";
+    else if (v && inp.hasAttribute("data-phone") && !/^\+\d{8,15}$/.test(phone(v))) m = "Enter a valid phone number.";
+    else if (v && inp.type === "date" && v > new Date().toISOString().slice(0, 10)) m = "The date can't be in the future.";
+    inp.parentElement.querySelector(".err").textContent = m;
+    return !m;
+  }
+  [].forEach.call(form.querySelectorAll("input"), function (inp) { inp.addEventListener("blur", function () { check(inp); }); });
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var inputs = [].slice.call(form.querySelectorAll("input")), ok = true, firstBad = null;
+    inputs.forEach(function (i) { if (!check(i)) { ok = false; firstBad = firstBad || i; } });
+    if (!ok) { firstBad.focus(); return; }
+    var values = {};
+    inputs.forEach(function (i) { var v = i.value.trim(); if (!v) return; values[i.name] = i.hasAttribute("data-phone") ? phone(v) : v; });
+    var btn = form.querySelector(".send"); btn.disabled = true; msg.textContent = "Sending…";
+    fetch("https://www.wixapis.com/oauth2/token", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ clientId: CLIENT_ID, grantType: "anonymous" }) })
+      .then(function (r) { if (!r.ok) throw new Error("auth"); return r.json(); })
+      .then(function (t) {
+        return fetch("https://www.wixapis.com/form-submission-service/v4/submissions", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Authorization: t.access_token },
+          body: JSON.stringify({ submission: { formId: FORM_ID, submissions: values } })
+        });
+      })
+      .then(function (r) { if (!r.ok) return r.json().then(function (d) { throw new Error((d && d.message) || "send"); }); return r.json(); })
+      .then(function () {
+        box.querySelector(".body").innerHTML = '<div class="done"><p class="eyebrow">Thank you!</p><h2>We got your enquiry.</h2><p class="lead">We\'ll call you soon to plan your visit to Swaram.</p></div>';
+      })
+      .catch(function () { btn.disabled = false; msg.textContent = "Sorry, that didn't go through. Please try again in a moment."; });
+  });
+})();
+</script>
