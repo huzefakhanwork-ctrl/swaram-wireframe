@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>
+  // open or reload this page directly -> start at the sketchbook (index.html). Coming from the sketchbook sets the pass.
+  (function () { try { if (sessionStorage.getItem("swaram-pass") !== "1") { location.replace("index.html"); return; } sessionStorage.removeItem("swaram-pass"); } catch (e) {} try { history.scrollRestoration = "manual"; } catch (e) {} })();
+</script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Swaram Early Years · Preschool in Bangalore</title>
 <meta name="description" content="Swaram Early Years is a preschool in Bangalore for children aged 2 to 5, where every child discovers their own voice.">

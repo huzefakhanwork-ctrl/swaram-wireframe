@@ -58,6 +58,11 @@
 </section>
 
 
+<script>
+  // links from the sketchbook into the site carry a one-time pass (see home.html); reloads start here again
+  try { history.scrollRestoration = "manual"; } catch (e) {}
+  document.addEventListener("click", function (e) { var a = e.target.closest && e.target.closest('a[href^="home.html"]'); if (a) { try { sessionStorage.setItem("swaram-pass", "1"); } catch (err) {} } }, true);
+</script>
 <script src="app.js?v=4"></script>
 </body>
 </html>
