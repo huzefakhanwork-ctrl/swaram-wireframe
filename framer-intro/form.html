@@ -110,16 +110,32 @@
     win.scrollTo({ top: h.getBoundingClientRect().top + win.pageYOffset - 110, behavior: "smooth" });
   }
   var FORM_TEXT = /book a visit|schedule a tour|read our story|opening soon|enquire|contact/i;
-  doc.addEventListener("click", function (e) {
-    var a = e.target.closest && e.target.closest("a,button");
-    if (!a || box.contains(a) || (doc.getElementById("swi") && doc.getElementById("swi").contains(a))) return;
-    var href = (a.getAttribute("href") || "").replace(/^\.\//, "/");
-    var text = a.textContent.trim();
+  // what a link should do on this one-page site: "form", a heading to scroll to, or null (leave it alone)
+  function action(t) {
+    var a = t && t.closest && t.closest("a,button");
+    if (!a || box.contains(a) || (doc.getElementById("swi") && doc.getElementById("swi").contains(a))) return null;
     var target = a.getAttribute("data-swf-go");
-    if (target) { e.preventDefault(); e.stopPropagation(); if (target === "form") open(); else go(target); return; }
-    if (FORM_TEXT.test(text) || /^\/contact/.test(href)) { e.preventDefault(); e.stopPropagation(); open(); return; }
-    if (/^\/about/.test(href)) { e.preventDefault(); e.stopPropagation(); go("Dear Parents"); return; }
-    if (/^\/programs/.test(href)) { e.preventDefault(); e.stopPropagation(); go("Our Programs"); return; }
+    if (target) return target;
+    var href = (a.getAttribute("href") || "").replace(/^\.\//, "/");
+    if (FORM_TEXT.test(a.textContent.trim()) || /^\/contact/.test(href)) return "form";
+    if (/^\/about/.test(href)) return "Dear Parents";
+    if (/^\/programs/.test(href)) return "Our Programs";
+    return null;
+  }
+  // Framer links navigate on the tap (pointer down/up), not only on click: swallow all of them
+  ["pointerdown", "pointerup", "mousedown", "mouseup", "touchstart", "touchend"].forEach(function (type) {
+    win.addEventListener(type, function (e) { if (action(e.target)) e.stopPropagation(); }, true);
+  });
+  win.addEventListener("click", function (e) {
+    var t = action(e.target); if (!t) return;
+    e.preventDefault(); e.stopPropagation();
+    if (t === "form") open(); else go(t);
+  }, true);
+  win.addEventListener("keydown", function (e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    var t = action(e.target); if (!t) return;
+    e.preventDefault(); e.stopPropagation();
+    if (t === "form") open(); else go(t);
   }, true);
 
   /* rename the template's nav links to this page's sections, and turn "Read our story" into the form */
