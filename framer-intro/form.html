@@ -160,8 +160,8 @@
     groups.forEach(function (g) {
       if (g.dataset.swfNav) return; g.dataset.swfNav = "1";
       var mine = navLinks.filter(function (l) { return g.contains(l); });
-      // the repeating piece: the child of the common parent that holds each plain link (an <li>, or the link itself)
-      var units = mine.map(function (l) { var u = l; var other = mine[(mine.indexOf(l) + 1) % mine.length]; while (u.parentElement && !u.parentElement.contains(other)) u = u.parentElement; return u; });
+      // the repeating piece: the link plus any wrapper that holds only it (e.g. its <li>)
+      var units = mine.map(function (l) { var u = l; while (u.parentElement && u.parentElement !== g && u.parentElement.children.length === 1) u = u.parentElement; return u; });
       // only the plain links count: Call Us and the Book a visit button are left as they are
       while (units.length < NAV.length) { var c = units[units.length - 1].cloneNode(true); units[units.length - 1].after(c); units.push(c); }
       units.forEach(function (u, i) {
