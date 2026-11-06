@@ -154,16 +154,15 @@
       var t = a.textContent.replace(/\s+/g, "");
       return /^(About){1,2}$|^(Programs){1,2}$|^(Contact){1,2}$/.test(t);
     });
+    // the group = the smallest box holding all three plain nav links
     var groups = [];
-    navLinks.forEach(function (a) { var p = a.parentElement; while (p && p.querySelectorAll('a[href="./about"],a[href="./programs"],a[href="./contact"]').length < 3) p = p.parentElement; if (p && groups.indexOf(p) < 0) groups.push(p); });
+    navLinks.forEach(function (a) { var p = a.parentElement; while (p && navLinks.filter(function (l) { return p.contains(l); }).length < 3) p = p.parentElement; if (p && groups.indexOf(p) < 0) groups.push(p); });
     groups.forEach(function (g) {
       if (g.dataset.swfNav) return; g.dataset.swfNav = "1";
-      var links = [].slice.call(g.querySelectorAll('a[href="./about"],a[href="./programs"],a[href="./contact"]'));
-      var tplLink = links[0], holder = tplLink.parentElement === g ? null : tplLink.parentElement;
-      var unit = holder && holder.parentElement === links[1].parentElement.parentElement ? holder : tplLink; // the repeating piece
-      var parent = unit.parentElement;
-      // make enough copies for every section
-      var units = [].slice.call(parent.children).filter(function (c) { return c === unit || c.contains(unit) || (c.querySelector && c.querySelector('a[href="./about"],a[href="./programs"],a[href="./contact"]')) || /^(A)$/.test(c.tagName) && /about|programs|contact/.test(c.getAttribute("href") || ""); });
+      var mine = navLinks.filter(function (l) { return g.contains(l); });
+      // the repeating piece: the child of the common parent that holds each plain link (an <li>, or the link itself)
+      var units = mine.map(function (l) { var u = l; var other = mine[(mine.indexOf(l) + 1) % mine.length]; while (u.parentElement && !u.parentElement.contains(other)) u = u.parentElement; return u; });
+      // only the plain links count: Call Us and the Book a visit button are left as they are
       while (units.length < NAV.length) { var c = units[units.length - 1].cloneNode(true); units[units.length - 1].after(c); units.push(c); }
       units.forEach(function (u, i) {
         var a = u.tagName === "A" ? u : u.querySelector("a");
