@@ -43,7 +43,17 @@ html,body{margin:0;height:100%;background:#F3EEE8}
     show(dx < -zone ? -1 : dx > zone ? 1 : 0);
   }
   addEventListener("pointermove", function (e) { fromX(e.clientX); }, { passive: true });
-  // Framer puts Embeds in a frame: also follow the mouse anywhere on the page around it
+  // Framer puts Embeds in a frame: sit on the same layer as the template's sections (z-index 1),
+  // so the sticky hero photo slides under this section instead of over it
+  try {
+    var up = window.frameElement;
+    for (var i = 0; i < 4 && up && up.parentElement; i++) {
+      up = up.parentElement;
+      if (window.parent.getComputedStyle(up).position === "static") up.style.position = "relative";
+      up.style.zIndex = "1";
+    }
+  } catch (e) {}
+  // also follow the mouse anywhere on the page around it
   try {
     var fe = window.frameElement, pw = window.parent;
     if (fe && pw && pw !== window) pw.addEventListener("pointermove", function (e) { fromX(e.clientX - fe.getBoundingClientRect().left); }, { passive: true });
