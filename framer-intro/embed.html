@@ -97,25 +97,43 @@
 
 <script>
 (function () {
-  var root = document.getElementById("swi");
-  if (!root || root.dataset.on) return; root.dataset.on = "1";
-  // move the intro to <body> so it always covers the whole page
-  if (root.parentNode !== document.body) document.body.appendChild(root);
-  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var html = document.documentElement, prevOverflow = html.style.overflow;
+  /* Framer runs Embed code inside its own frame. If so, move the intro onto the real page
+     (the frame has the same origin) and hide the frame, so visitors can use the site after. */
+  var win = window, doc = document;
+  var src = document.getElementById("swi");
+  if (!src) return;
+  try {
+    if (window.frameElement && window.parent && window.parent.document) {
+      win = window.parent; doc = win.document;
+      var fe = window.frameElement, el = fe;
+      for (var i = 0; i < 6 && el && el !== doc.body; i++) { el.style.pointerEvents = "none"; el = el.parentElement; }
+      fe.style.display = "none";
+    }
+  } catch (e) { win = window; doc = document; }
+  if (doc.getElementById("swi-on")) return;          // already running on this page
+  var mark = doc.createElement("meta"); mark.id = "swi-on"; doc.head.appendChild(mark);
+  if (doc !== document) {                             // copy the fonts, styles and markup across
+    [].forEach.call(document.querySelectorAll("link[rel=stylesheet], style"), function (n) { doc.head.appendChild(doc.importNode(n, true)); });
+  }
+  var root = doc !== document ? doc.importNode(src, true) : src;
+  doc.body.appendChild(root);
+  if (doc !== document) src.remove();
+
+  var reduce = win.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var html = doc.documentElement, prevOverflow = html.style.overflow;
   html.style.overflow = "hidden";
 
   /* preloader: type the name, draw the pencil line */
   var ld = root.querySelector(".ld"), word = root.querySelector(".ld-word"), bar = root.querySelector(".ld-bar");
-  var text = "[Swaram Early Years]", bold = [1, 4, 5, 8, 11, 12, 15, 16], n = 0, start = performance.now(), MIN = reduce ? 0 : 2200;
+  var text = "[Swaram Early Years]", bold = [1, 4, 5, 8, 11, 12, 15, 16], n = 0, start = win.performance.now(), MIN = reduce ? 0 : 2200;
   function tick(t) {
     var p = Math.min(1, (t - start) / MIN), k = Math.round(p * text.length);
     if (k !== n) { n = k; word.innerHTML = text.slice(0, n).split("").map(function (c, i) { return bold.indexOf(i) > -1 ? "<b>" + c + "</b>" : c; }).join(""); }
     bar.style.setProperty("--p", (p * 100).toFixed(1) + "%");
-    if (p < 1) return requestAnimationFrame(tick);
-    setTimeout(function () { ld.classList.add("done"); setTimeout(function () { root.classList.add("ready"); }, 300); }, 250);
+    if (p < 1) return win.requestAnimationFrame(tick);
+    win.setTimeout(function () { ld.classList.add("done"); win.setTimeout(function () { root.classList.add("ready"); }, 300); }, 250);
   }
-  requestAnimationFrame(tick);
+  win.requestAnimationFrame(tick);
 
   /* the [Swaram Early Years] letters change weight one by one */
   var brand = root.querySelector(".brand"), BT = brand.textContent;
@@ -125,32 +143,31 @@
     ls.forEach(function (l) { if (Math.random() < 0.55) l.style.setProperty("--wt", W[Math.floor(Math.random() * W.length)]); });
     gaps.forEach(function (g) { if (Math.random() < 0.5) g.style.setProperty("--gw", (0.35 + Math.random() * 1.1).toFixed(2) + "ch"); });
   }
-  morph(); var mt = reduce ? 0 : setInterval(morph, 520);
+  morph(); var mt = reduce ? 0 : win.setInterval(morph, 520);
 
   /* stickers, menu and button: close the intro, then go to the section or page */
   [].forEach.call(root.querySelectorAll(".bk"), function (a, i) { a.style.setProperty("--i", i); });
   function close(then) {
     root.classList.add("gone"); html.style.overflow = prevOverflow;
-    setTimeout(function () { clearInterval(mt); root.remove(); if (then) then(); }, reduce ? 0 : 650);
+    win.setTimeout(function () { win.clearInterval(mt); root.remove(); if (then) then(); }, reduce ? 0 : 650);
   }
   function findHeading(txt) {
     txt = txt.toLowerCase();
-    return [].slice.call(document.querySelectorAll("h1,h2,h3")).filter(function (h) { return !root.contains(h) && h.textContent.trim().toLowerCase().indexOf(txt) === 0; })[0];
+    return [].slice.call(doc.querySelectorAll("h1,h2,h3")).filter(function (h) { return !root.contains(h) && h.textContent.trim().toLowerCase().indexOf(txt) === 0; })[0];
   }
   root.addEventListener("click", function (e) {
     var a = e.target.closest("[data-go]"); if (!a) return;
     e.preventDefault();
     var go = a.dataset.go;
     if (a.classList.contains("bk") && !reduce) a.classList.add("peel");
-    setTimeout(function () {
+    win.setTimeout(function () {
       if (go === "close") return close();
-      if (go.charAt(0) === "/") return close(function () { location.href = go; });
+      if (go.charAt(0) === "/") return close(function () { win.location.href = go; });
       var h = findHeading(go);
       close(function () {
         if (!h) return;
-        var y = h.getBoundingClientRect().top + window.pageYOffset - 110;
-        window.scrollTo(0, y);
-        setTimeout(function () { window.scrollTo(0, h.getBoundingClientRect().top + window.pageYOffset - 110); }, 400); // again, after lazy sections settle
+        win.scrollTo(0, h.getBoundingClientRect().top + win.pageYOffset - 110);
+        win.setTimeout(function () { win.scrollTo(0, h.getBoundingClientRect().top + win.pageYOffset - 110); }, 400); // again, after lazy sections settle
       });
     }, a.classList.contains("bk") ? 380 : 0);
   });
