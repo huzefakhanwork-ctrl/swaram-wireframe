@@ -79,7 +79,6 @@
     lastFocus = doc.activeElement;
     box.classList.add("open");
     doc.documentElement.style.overflow = "hidden";
-    try { win.sessionStorage.setItem("swf-seen", "1"); } catch (e) {}
     var first = box.querySelector("input"); if (first) win.setTimeout(function () { first.focus(); }, 60);
   }
   function close() {
@@ -92,12 +91,12 @@
   doc.addEventListener("keydown", function (e) { if (e.key === "Escape" && box.classList.contains("open")) close(); });
   win.SwaramForm = { open: open, close: close };
 
-  /* 50% scroll: once per visit, and never while the sketchbook intro is showing */
-  function seen() { try { return win.sessionStorage.getItem("swf-seen") === "1"; } catch (e) { return false; } }
+  /* 50% scroll: pops up by itself once per visit (opening it from a button does not count), and never while the sketchbook intro is showing */
+  function seen() { try { return win.sessionStorage.getItem("swf-auto") === "1"; } catch (e) { return false; } }
   win.addEventListener("scroll", function () {
     if (seen() || box.classList.contains("open") || doc.getElementById("swi")) return;
     var h = doc.documentElement.scrollHeight - win.innerHeight;
-    if (h > 0 && win.pageYOffset / h >= 0.5) open();
+    if (h > 0 && win.pageYOffset / h >= 0.5) { try { win.sessionStorage.setItem("swf-auto", "1"); } catch (e) {} open(); }
   }, { passive: true });
 
   /* one-page site: links scroll to sections here; only the form opens anything */
@@ -148,38 +147,34 @@
     if (!leaves.length) { a.textContent = label; return; }
     leaves.forEach(function (n) { n.textContent = label; });
   }
+  // Framer re-renders its nav lists (e.g. when the header changes on scroll), so its own links are never edited:
+  // our five links are added to each list as extra <li>s, and CSS hides the template's About / Programs / Contact items.
+  var css = doc.createElement("style");
+  css.textContent = 'ul:has(> li.swf-li) > li:not(.swf-li):has(> a[href="./about"], > a[href="./programs"], > a[href="./contact"]:not([data-framer-name="Primary"])){display:none!important}'
+    + 'a[href^="./legal"]{display:none!important}';
+  doc.head.appendChild(css);
+  function isPlain(li) {
+    var a = li.firstElementChild;
+    return li.tagName === "LI" && !li.classList.contains("swf-li") && a && a.tagName === "A"
+      && /^\.\/(about|programs|contact)$/.test(a.getAttribute("href") || "") && a.getAttribute("data-framer-name") !== "Primary";
+  }
   function fixLinks() {
-    // header navs: the group holding About / Programs / Contact
-    var navLinks = [].slice.call(doc.querySelectorAll('a[href="./about"], a[href="./programs"], a[href="./contact"]')).filter(function (a) {
-      var t = a.textContent.replace(/\s+/g, "");
-      return /^(About(Us)?){1,2}$|^(Programs){1,2}$|^(Contact(Us)?){1,2}$/i.test(t);
-    });
-    // the group = the smallest box holding all three plain nav links
-    var groups = [];
-    navLinks.forEach(function (a) { var p = a.parentElement; while (p && navLinks.filter(function (l) { return p.contains(l); }).length < 3) p = p.parentElement; if (p && groups.indexOf(p) < 0) groups.push(p); });
-    groups.forEach(function (g) {
-      if (g.dataset.swfNav) return; g.dataset.swfNav = "1";
-      var mine = navLinks.filter(function (l) { return g.contains(l); });
-      // the repeating piece: the link plus any wrapper that holds only it (e.g. its <li>)
-      var units = mine.map(function (l) { var u = l; while (u.parentElement && u.parentElement !== g && u.parentElement.children.length === 1) u = u.parentElement; return u; });
-      // only the plain links count: Call Us and the Book a visit button are left as they are
-      while (units.length < NAV.length) { var c = units[units.length - 1].cloneNode(true); units[units.length - 1].after(c); units.push(c); }
-      units.forEach(function (u, i) {
-        var a = u.tagName === "A" ? u : u.querySelector("a");
-        if (!a) return;
-        if (i >= NAV.length) { u.style.display = "none"; return; }
-        setText(a, NAV[i][0]); a.setAttribute("data-swf-go", NAV[i][1]); a.setAttribute("href", "#");
+    [].forEach.call(doc.querySelectorAll("ul"), function (ul) {
+      if (ul.querySelector(":scope > li.swf-li")) return;
+      var plain = [].filter.call(ul.children, isPlain);
+      if (!plain.length) return;
+      var frag = doc.createDocumentFragment();
+      NAV.forEach(function (n) {
+        var li = plain[0].cloneNode(true), a = li.firstElementChild;
+        li.classList.add("swf-li"); li.removeAttribute("style");
+        setText(a, n[0]); a.setAttribute("href", "#"); a.setAttribute("data-swf-go", n[1]); a.removeAttribute("aria-current");
+        frag.appendChild(li);
       });
+      ul.insertBefore(frag, plain[0]);
     });
     // "Read our story" becomes "Book a visit"
     [].forEach.call(doc.querySelectorAll('a[href="./about"]'), function (a) {
-      if (/read our story/i.test(a.textContent)) { setText(a, "Book a visit"); a.setAttribute("data-swf-go", "form"); a.setAttribute("href", "#"); }
-    });
-    // the template's legal pages are not Swaram's: hide those links
-    [].forEach.call(doc.querySelectorAll('a[href^="./legal"]'), function (a) { a.style.display = "none"; });
-    // footer "About Us" -> our story
-    [].forEach.call(doc.querySelectorAll('a[href="./about"]'), function (a) {
-      if (/about us/i.test(a.textContent)) { setText(a, "Our story"); a.setAttribute("data-swf-go", "Dear Parents"); a.setAttribute("href", "#"); }
+      if (/read our story/i.test(a.textContent)) { setText(a, "Book a visit"); a.setAttribute("data-swf-go", "form"); }
     });
   }
   fixLinks();
