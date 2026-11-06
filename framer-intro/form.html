@@ -152,7 +152,7 @@
     // header navs: the group holding About / Programs / Contact
     var navLinks = [].slice.call(doc.querySelectorAll('a[href="./about"], a[href="./programs"], a[href="./contact"]')).filter(function (a) {
       var t = a.textContent.replace(/\s+/g, "");
-      return /^(About){1,2}$|^(Programs){1,2}$|^(Contact){1,2}$/.test(t);
+      return /^(About(Us)?){1,2}$|^(Programs){1,2}$|^(Contact(Us)?){1,2}$/i.test(t);
     });
     // the group = the smallest box holding all three plain nav links
     var groups = [];
