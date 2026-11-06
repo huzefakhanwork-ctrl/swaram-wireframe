@@ -17,3 +17,7 @@ pg-k2.webp         https://www.pexels.com/photo/31864402/
 
 Replace any of them with Swaram's own photos later: keep the same file name, or change the src in home.html.
 dear-parents.webp  https://www.pexels.com/photo/3920704/
+hero-1.webp        https://www.pexels.com/photo/11344264/
+hero-2.webp        https://www.pexels.com/photo/4047662/
+hero-3.webp        https://www.pexels.com/photo/8613055/
+hero-4.webp        https://www.pexels.com/photo/8023000/

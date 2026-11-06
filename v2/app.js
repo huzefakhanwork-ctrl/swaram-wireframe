@@ -96,11 +96,15 @@
     if (!reduce) setInterval(morph, 520);
   }
 
-  /* ---------- Hero video: shows once a src is added ---------- */
-  var vid = document.querySelector(".hero-video"), snd = document.querySelector(".sound");
-  if (vid && vid.getAttribute("src")) {
-    snd.hidden = false;
-    snd.onclick = function () { vid.muted = !vid.muted; snd.textContent = vid.muted ? "🔈" : "🔊"; snd.setAttribute("aria-label", vid.muted ? "Turn sound on" : "Turn sound off"); };
+  /* ---------- Hero slideshow: next photo every 6s ---------- */
+  var slides = [].slice.call(document.querySelectorAll(".hero-slides img"));
+  if (slides.length > 1 && !reduce) {
+    var si = 0;
+    setInterval(function () {
+      slides[si].classList.remove("on");
+      si = (si + 1) % slides.length;
+      slides[si].classList.add("on");
+    }, 6000);
   }
 
   /* ---------- Our programs carousel: arrows + drag, wraps around at the ends ---------- */
