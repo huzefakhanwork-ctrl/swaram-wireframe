@@ -106,8 +106,9 @@
     return [].slice.call(doc.querySelectorAll("h1,h2,h3")).filter(function (h) { return h.textContent.trim().toLowerCase().indexOf(txt) === 0; })[0];
   }
   function go(txt) {
+    if (txt === "top") { win.scrollTo({ top: 0, behavior: "smooth" }); return; }
     var h = heading(txt); if (!h) return;
-    win.scrollTo({ top: h.getBoundingClientRect().top + win.pageYOffset - 110, behavior: "smooth" });
+    win.scrollTo({ top: h.getBoundingClientRect().top + win.pageYOffset - 140, behavior: "smooth" });
   }
   var FORM_TEXT = /book a visit|schedule a tour|read our story|opening soon|enquire|contact/i;
   // what a link should do on this one-page site: "form", a heading to scroll to, or null (leave it alone)
@@ -119,7 +120,8 @@
     var href = (a.getAttribute("href") || "").replace(/^\.\//, "/");
     if (FORM_TEXT.test(a.textContent.trim()) || /^\/contact/.test(href)) return "form";
     if (/^\/about/.test(href)) return "Dear Parents";
-    if (/^\/programs/.test(href)) return "Our Programs";
+    if (/^\/programs/.test(href)) return "form";          // a program card: ask about it
+    if (href === "/") return "top";                       // the logo: back to the top
     return null;
   }
   // Framer links navigate on the tap (pointer down/up), not only on click: swallow all of them
@@ -174,6 +176,8 @@
     [].forEach.call(doc.querySelectorAll('a[href="./about"]'), function (a) {
       if (/read our story/i.test(a.textContent)) { setText(a, "Book a visit"); a.setAttribute("data-swf-go", "form"); a.setAttribute("href", "#"); }
     });
+    // the template's legal pages are not Swaram's: hide those links
+    [].forEach.call(doc.querySelectorAll('a[href^="./legal"]'), function (a) { a.style.display = "none"; });
     // footer "About Us" -> our story
     [].forEach.call(doc.querySelectorAll('a[href="./about"]'), function (a) {
       if (/about us/i.test(a.textContent)) { setText(a, "Our story"); a.setAttribute("data-swf-go", "Dear Parents"); a.setAttribute("href", "#"); }
