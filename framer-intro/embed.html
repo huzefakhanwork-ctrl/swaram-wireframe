@@ -128,6 +128,10 @@
   var reduce = win.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var html = doc.documentElement, prevOverflow = html.style.overflow;
   html.style.overflow = "hidden";
+  // every visit and every reload starts at the very top, under the sketchbook (no restored scroll position)
+  try { win.history.scrollRestoration = "manual"; } catch (e) {}
+  if (win.location.hash) { try { win.history.replaceState(null, "", win.location.pathname + win.location.search); } catch (e) {} }
+  win.scrollTo(0, 0); win.setTimeout(function () { win.scrollTo(0, 0); }, 300);
 
   /* preloader: type the name, draw the pencil line */
   var ld = root.querySelector(".ld"), word = root.querySelector(".ld-word"), bar = root.querySelector(".ld-bar");
