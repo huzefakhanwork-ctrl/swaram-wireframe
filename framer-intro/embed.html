@@ -87,7 +87,7 @@
       <a class="bk" data-go="Teachers at Swaram" style="--x:36.0%;--y:57.8%;--w:12.2%;--r:3deg"><img src="https://cdn.jsdelivr.net/gh/huzefakhanwork-ctrl/swaram-wireframe@07dd7d2/framer-intro/img/label-teachers.webp" alt="Teachers"></a>
       <a class="bk" data-go="Our Programs" style="--x:57.3%;--y:36.0%;--w:16.4%;--r:-3deg"><img src="https://cdn.jsdelivr.net/gh/huzefakhanwork-ctrl/swaram-wireframe@07dd7d2/framer-intro/img/label-programs.webp" alt="Our programs"></a>
       <a class="bk" data-go="Come and Visit Swaram" style="--x:76.6%;--y:31.0%;--w:14.2%;--r:-6deg"><img src="https://cdn.jsdelivr.net/gh/huzefakhanwork-ctrl/swaram-wireframe@07dd7d2/framer-intro/img/hand-pencil.webp" alt=""><span>Book a visit</span></a>
-      <a class="bk" data-go="Every Child Has a Voice" style="--x:58.1%;--y:52.8%;--w:13.6%;--r:-4deg"><img src="https://cdn.jsdelivr.net/gh/huzefakhanwork-ctrl/swaram-wireframe@07dd7d2/framer-intro/img/label-lookme.webp" alt="Look at me"></a>
+      <a class="bk" data-go="Let your children" style="--x:58.1%;--y:52.8%;--w:13.6%;--r:-4deg"><img src="https://cdn.jsdelivr.net/gh/huzefakhanwork-ctrl/swaram-wireframe@07dd7d2/framer-intro/img/label-lookme.webp" alt="Look at me"></a>
       <a class="bk" data-go="/about" style="--x:75.1%;--y:57.1%;--w:11.6%;--r:7deg"><img src="https://cdn.jsdelivr.net/gh/huzefakhanwork-ctrl/swaram-wireframe@07dd7d2/framer-intro/img/label-founder.webp" alt="Founder's note"></a>
     </div>
     <a class="cta" data-go="close">Visit the website <span aria-hidden="true">→</span></a>
@@ -155,7 +155,17 @@
   }
   function findHeading(txt) {
     txt = txt.toLowerCase();
-    return [].slice.call(doc.querySelectorAll("h1,h2,h3")).filter(function (h) { return !root.contains(h) && h.textContent.trim().toLowerCase().indexOf(txt) === 0; })[0];
+    var hit = [].slice.call(doc.querySelectorAll("h1,h2,h3")).filter(function (h) { return !root.contains(h) && h.textContent.trim().toLowerCase().indexOf(txt) === 0; })[0];
+    if (hit) return hit;
+    // sections added as Embeds live in their own frame: look inside those too, and scroll to the frame
+    var frames = [].slice.call(doc.querySelectorAll("iframe"));
+    for (var i = 0; i < frames.length; i++) {
+      try {
+        var d = frames[i].contentDocument;
+        if (d && [].some.call(d.querySelectorAll("h1,h2,h3"), function (h) { return h.textContent.trim().toLowerCase().indexOf(txt) === 0; })) return frames[i];
+      } catch (e) {}
+    }
+    return null;
   }
   root.addEventListener("click", function (e) {
     var a = e.target.closest("[data-go]"); if (!a) return;
