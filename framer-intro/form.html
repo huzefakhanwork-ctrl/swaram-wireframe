@@ -197,7 +197,7 @@
     inp.parentElement.querySelector(".err").textContent = m;
     return !m;
   }
-  [].forEach.call(form.querySelectorAll("input"), function (inp) { inp.addEventListener("blur", function () { check(inp); }); });
+  [].forEach.call(form.querySelectorAll("input"), function (inp) { inp.addEventListener("input", function () { inp.dataset.touched = "1"; }); inp.addEventListener("blur", function () { if (inp.dataset.touched && box.classList.contains("open")) check(inp); }); });
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     var inputs = [].slice.call(form.querySelectorAll("input")), ok = true, firstBad = null;
