@@ -46,11 +46,13 @@
   var awake = false;
   function wake() {
     if (awake) return; awake = true;
+    if (video.readyState < 1) { try { video.load(); } catch (e) {} }
     try { var p = video.play(); if (p && p.then) p.then(function () { video.pause(); go(want); }).catch(function () { awake = false; }); else video.pause(); } catch (e) { awake = false; }
   }
   sec.addEventListener("touchstart", wake, { passive: true });
 
-  new IntersectionObserver(function (es) { inView = es[0].isIntersecting; }, { threshold: 0.1 }).observe(sec);
+  new IntersectionObserver(function (es) { inView = es[0].isIntersecting; if (inView) wake(); }, { threshold: 0.1, rootMargin: "300px 0px" }).observe(sec);
+  sec.addEventListener("click", wake);
 
   // mouse (computers) and finger swipe (phones)
   function fromX(x) { var w = innerWidth || 1, pad = w * 0.02; return (x - pad) / (w - pad * 2); }
@@ -69,7 +71,7 @@
   var gotTilt = false;
   function tilt(e) {
     if (e.gamma == null) return;
-    if (!gotTilt) { gotTilt = true; if (btn) { btn.classList.add("on"); btn.textContent = "Tilt your phone to guide him"; setTimeout(function () { btn.hidden = true; }, 1800); } }
+    if (!gotTilt) { gotTilt = true; if (btn) { btn.classList.add("on"); btn.textContent = "Tilt your phone to guide him"; } }
     if (!inView) return;
     var g = lean(e);
     go((Math.max(-RANGE, Math.min(RANGE, g)) + RANGE) / (RANGE * 2));
@@ -78,6 +80,7 @@
   var listening = false;
   function start() { if (listening) return; listening = true; addEventListener("deviceorientation", tilt); }
   var isTouch = ("ontouchstart" in window) || navigator.maxTouchPoints > 0 || matchMedia("(hover: none), (pointer: coarse)").matches;
+  if (isTouch) sec.classList.add("touch");   // the tilt button always shows on touch screens
   if (isTouch && window.DeviceOrientationEvent) start();
   if (btn) btn.addEventListener("click", function () {
     wake();                                   // load the video's frames (iPhone)

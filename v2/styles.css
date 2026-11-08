@@ -690,3 +690,4 @@ body.home main > section, body.home .day2 { background: transparent; }
   .tw-btn:active { transform: translateX(-50%) scale(.96); }
 }
 @media (max-width: 720px) { .tw-copy { position: static; } .tw-title, .tw-hint { position: relative; z-index: 2; } }
+.tw.touch .tw-btn { display: inline-block !important; }
