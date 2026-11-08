@@ -672,3 +672,21 @@ body.home main > section, body.home .day2 { background: transparent; }
 }
 /* phones: show the middle 40% of the scene so his whole face stays in view when he turns */
 @media (max-width: 720px) { .tw-video { height: min(128vw, 72svh); min-height: 0; object-position: 50% 50%; } }
+
+/* Safari draws a <video> with a CSS mask as nothing once it plays, so the soft edges are plain gradient strips
+   in the page colour instead (truewld.js works out the colour of the page wash at that spot) */
+.tw-video, .tw-shade { -webkit-mask-image: none !important; mask-image: none !important; }
+.tw-fade { position: absolute; left: 0; right: 0; height: 120px; z-index: 1; pointer-events: none; }
+.tw-fade-top { top: 0; background: linear-gradient(to bottom, var(--tw-top, #FFF4E6), rgba(255,255,255,0)); }
+.tw-fade-bot { bottom: 0; background: linear-gradient(to top, var(--tw-bot, #EFF5EC), rgba(255,255,255,0)); }
+.tw-copy { z-index: 2; }
+@media (max-width: 720px) {
+  .tw-video { height: min(118vw, 60svh); }
+  .tw-fade-top { height: 60px; }
+  .tw-fade-bot { bottom: auto; top: calc(min(118vw, 60svh) - 90px); height: 90px; }
+  .tw-copy { margin-top: -10px; }
+  /* the tilt button sits on the bottom of the video, so video + button fit on one screen */
+  .tw-btn { position: absolute; z-index: 3; left: 50%; top: calc(min(118vw, 60svh) - 74px); transform: translateX(-50%); white-space: nowrap; box-shadow: 0 6px 18px rgba(0,0,0,.18); }
+  .tw-btn:active { transform: translateX(-50%) scale(.96); }
+}
+@media (max-width: 720px) { .tw-copy { position: static; } .tw-title, .tw-hint { position: relative; z-index: 2; } }
