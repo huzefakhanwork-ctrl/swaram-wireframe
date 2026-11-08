@@ -68,10 +68,8 @@
     if (a === -90 || a === 270) return -e.beta;
     return e.gamma;                        // portrait
   }
-  var gotTilt = false;
   function tilt(e) {
     if (e.gamma == null) return;
-    if (!gotTilt) { gotTilt = true; if (btn) { btn.classList.add("on"); btn.textContent = "Tilt your phone to guide him"; } }
     if (!inView) return;
     var g = lean(e);
     go((Math.max(-RANGE, Math.min(RANGE, g)) + RANGE) / (RANGE * 2));
@@ -82,11 +80,13 @@
   var isTouch = ("ontouchstart" in window) || navigator.maxTouchPoints > 0 || matchMedia("(hover: none), (pointer: coarse)").matches;
   if (isTouch) sec.classList.add("touch");   // the tilt button always shows on touch screens
   if (isTouch && window.DeviceOrientationEvent) start();
-  if (btn) btn.addEventListener("click", function () {
-    wake();                                   // load the video's frames (iPhone)
-    start();
-    if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === "function") {
-      DeviceOrientationEvent.requestPermission().catch(function () {});   // iPhone: "Allow motion" prompt
+  // iPhone only sends tilt after a tap: any tap on the section asks once ("Allow motion") and wakes the video
+  var asked = false;
+  sec.addEventListener("click", function () {
+    wake(); start();
+    if (!asked && window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === "function") {
+      asked = true;
+      DeviceOrientationEvent.requestPermission().catch(function () { asked = false; });
     }
   });
 })();
