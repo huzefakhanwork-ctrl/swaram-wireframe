@@ -615,3 +615,60 @@ body.is-loading { overflow: hidden; }
 @keyframes swqFade { from { opacity: 0; } }
 @keyframes swqUp { from { transform: translateY(30px) scale(.97); opacity: 0; } }
 @media (max-width: 560px) { .swq-card { padding: 26px 18px 20px; } .swq .wform .grid { grid-template-columns: 1fr; } }
+
+/* ===== Look at me: "the true world" scrub video ===== */
+.tw { position: relative; height: 100vh; height: 100svh; min-height: 520px; overflow: hidden; background: #0d0d12; display: flex; align-items: flex-end; }
+.tw-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+.tw-shade { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 45%); transition: background .5s; }
+.tw.night .tw-shade { background: linear-gradient(90deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 50%); }
+.tw-copy { position: relative; z-index: 2; padding: clamp(24px, 4vw, 48px); max-width: 720px; display: flex; flex-direction: column; gap: 14px; }
+.tw-title { margin: 0; font: 800 clamp(34px, 5.4vw, 72px)/.93 var(--sans); letter-spacing: -.04em; text-transform: uppercase; }
+.tw-line { display: block; }
+.tw-a, .tw-b { transition: color .5s ease-out, text-shadow .5s ease-out; }
+.tw-a { color: #111; text-shadow: 0 1px 4px rgba(255,255,255,.85); }
+.tw-b { color: #8a8277; text-shadow: 0 1px 4px rgba(255,255,255,.85); }
+.tw.night .tw-a { color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,.95); }
+.tw.night .tw-b { color: #ded6cb; text-shadow: 0 2px 10px rgba(0,0,0,.95); }
+.tw-hint { margin: 0; font-size: 15px; color: #5a544c; text-shadow: 0 1px 3px rgba(255,255,255,.8); transition: color .5s; }
+.tw.night .tw-hint { color: #d6cec3; text-shadow: 0 1px 4px rgba(0,0,0,.9); }
+.tw-btn { align-self: flex-start; font: 600 14px var(--sans); padding: 11px 22px; border-radius: 99px; border: 1.5px solid #111; background: #fff; color: #111; cursor: pointer; transition: background .3s, color .3s, border-color .3s, transform .15s; }
+.tw-btn:active { transform: scale(.96); }
+.tw.night .tw-btn { border-color: #fff; box-shadow: 0 0 20px rgba(255,255,255,.2); }
+.tw-btn.on { background: #111; color: #fff; border-color: #fff; }
+@media (hover: hover) and (pointer: fine) { .tw-btn { display: none; } }
+@media (max-width: 720px) { .tw-video { object-position: 42% 50%; } .tw-shade { background: linear-gradient(0deg, rgba(255,255,255,.7) 0%, rgba(255,255,255,0) 55%); } .tw.night .tw-shade { background: linear-gradient(0deg, rgba(0,0,0,.65) 0%, rgba(0,0,0,0) 55%); } }
+.tw-shade { background: linear-gradient(90deg, rgba(243,238,232,.86) 0%, rgba(243,238,232,.6) 30%, rgba(243,238,232,0) 55%); }
+.tw.night .tw-shade { background: linear-gradient(90deg, rgba(8,10,20,.78) 0%, rgba(8,10,20,.5) 30%, rgba(8,10,20,0) 55%); }
+.tw-b { color: #7d766b; }
+
+/* ===== one continuous soft colour wash down the page, so sections flow into each other ===== */
+body.home { background: linear-gradient(180deg,
+  #FFF7EE 0%, #FDEFE4 12%, #F4F5EA 24%, #EAF3F1 36%, #EEF1FA 48%,
+  #FBEFF2 60%, #FFF4E6 72%, #EFF5EC 84%, #FFF7EE 100%); }
+body.home main > section, body.home .day2 { background: transparent; }
+/* hero photos feather into the wash at the bottom */
+.home .hero.hero-full { background: transparent; }
+.hero-slides, .hero-shade { -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 110px), transparent 100%); mask-image: linear-gradient(to bottom, #000 calc(100% - 110px), transparent 100%); }
+.hero-copy { padding-bottom: clamp(110px, 15vh, 150px); }
+.scroll-cue { bottom: clamp(110px, 15vh, 150px); }
+/* the true-world video feathers in at the top and out at the bottom */
+.tw { background: transparent; }
+.tw-video, .tw-shade { -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%); mask-image: linear-gradient(to bottom, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%); }
+.tw-copy { padding-bottom: 130px; }
+.foot { border-top: 0; }
+/* phones: the video fills the top of the screen, the words sit underneath on the page colour (always dark, always readable) */
+@media (max-width: 720px) {
+  .tw { display: block; height: auto; min-height: 0; }
+  .tw-video { position: relative; display: block; height: 64svh; min-height: 380px; object-position: 47% 50%;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 60px, #000 calc(100% - 90px), transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 60px, #000 calc(100% - 90px), transparent 100%); }
+  .tw-shade { display: none; }
+  .tw-copy { margin-top: -30px; padding: 0 20px 60px; }
+  .tw-title { font-size: clamp(34px, 11vw, 48px); }
+  .tw-a, .tw.night .tw-a { color: #111; text-shadow: none; }
+  .tw-b, .tw.night .tw-b { color: #8a8277; text-shadow: none; }
+  .tw-hint, .tw.night .tw-hint { color: #6b655c; text-shadow: none; }
+  .tw.night .tw-btn { box-shadow: none; border-color: #111; }
+}
+/* phones: show the middle 40% of the scene so his whole face stays in view when he turns */
+@media (max-width: 720px) { .tw-video { height: min(128vw, 72svh); min-height: 0; object-position: 50% 50%; } }
