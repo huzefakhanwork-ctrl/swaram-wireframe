@@ -917,3 +917,24 @@ body.home main > section, body.home .day2 { background: transparent; }
 .hero-shade, .hero-slides + .hero-shade { background: linear-gradient(180deg, rgba(10,18,28,.28) 0%, rgba(10,18,28,0) 22%, rgba(255,247,238,0) 42%, rgba(255,247,238,.62) 72%, rgba(255,247,238,.85) 100%); }
 .home .hero .scroll-cue { border-color: rgba(20,20,20,.55); }
 .home .hero .scroll-cue span { background: #141414; }
+
+/* ===== Founder: Lalith on the left, the letter on the right ===== */
+.fd-grid { display: grid; grid-template-columns: minmax(240px, 320px) minmax(0, 760px); gap: clamp(32px, 5vw, 72px); justify-content: center; align-items: start; margin-top: 8px; }
+.fd-who { position: sticky; top: 110px; display: grid; justify-items: center; text-align: center; }
+.fd-photo { width: min(280px, 100%); aspect-ratio: 1; border-radius: 50%; padding: 6px; background: conic-gradient(from 210deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5, #feda75); box-shadow: 0 18px 40px rgba(0,0,0,.12); transition: transform .4s var(--spring); }
+.fd-photo img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 5px solid #fff; background: #fff; }
+.fd-who:hover .fd-photo { transform: rotate(-3deg) scale(1.03); }
+.fd-name { margin: 22px 0 2px; font: 700 24px var(--sans); letter-spacing: -.01em; }
+.fd-role { margin: 0 0 18px; color: #6b655c; font-size: 15px; }
+.fd-ig { display: inline-flex; align-items: center; gap: 10px; font: 600 15px var(--sans); color: #fff; text-decoration: none; padding: 13px 22px; border-radius: 99px; background: linear-gradient(45deg, #fa7e1e, #d62976 45%, #962fbf); box-shadow: 0 10px 24px rgba(214,41,118,.28); transition: transform .25s var(--spring), box-shadow .25s; }
+.fd-ig:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(214,41,118,.36); }
+.fd-ig svg { width: 20px; height: 20px; fill: none; stroke: #fff; stroke-width: 2; }
+.fd-ig svg .dot { fill: #fff; stroke: none; }
+.fd-letter .env { margin: 0; max-width: none; }
+.fd-letter .env .letter { left: 4%; right: 4%; }
+@media (max-width: 900px) {
+  .fd-grid { grid-template-columns: 1fr; }
+  .fd-who { position: static; }
+  .fd-photo { width: 200px; }
+}
+.env.out .letter { transform: none !important; }
