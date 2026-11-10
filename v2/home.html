@@ -31,12 +31,12 @@
     <a class="brand nav-brand" href="#top" id="brand">[Swaram Early Years]</a>
   </div>
   <nav aria-label="Main" id="nav-links">
-    <a href="#story">Our story<img src="img/crayon-1.webp" alt=""></a>
-    <a href="#what">Our goal<img src="img/crayon-2.webp" alt=""></a>
-    <a href="#programs">Programs<img src="img/crayon-3.webp" alt=""></a>
-    <a href="#founder">Founder<img src="img/crayon-1.webp" alt=""></a>
-    <a href="#visit">Visit<img src="img/crayon-2.webp" alt=""></a>
-    <a href="#day">A day<img src="img/crayon-3.webp" alt=""></a>
+    <a href="#day">A day<img src="img/crayon-1.webp" alt=""></a>
+    <a href="#story">About us<img src="img/crayon-2.webp" alt=""></a>
+    <a href="#what">Our goal<img src="img/crayon-3.webp" alt=""></a>
+    <a href="#programs">Programs<img src="img/crayon-1.webp" alt=""></a>
+    <a href="#founder">Founder<img src="img/crayon-2.webp" alt=""></a>
+    <a href="#visit">Visit<img src="img/crayon-3.webp" alt=""></a>
   </nav>
   <div class="nav-right">
     <a class="nav-call" href="#visit" data-enquire>Schedule a call</a>
@@ -58,25 +58,43 @@
   <div class="wrap hero-copy">
     <h1 id="hero-title" class="words hero-only">Where every child discovers their own voice</h1>
   </div>
-  <a class="scroll-cue" href="#story" aria-label="Scroll down"><span></span></a>
+  <a class="scroll-cue" href="#day" aria-label="Scroll down"><span></span></a>
 </section>
 
-<!-- shapes for the photo blobs -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <clipPath id="blob-a" clipPathUnits="objectBoundingBox"><path d="M.08,.62 C.02,.42 .2,.3 .34,.33 C.46,.36 .5,.12 .66,.08 C.84,.03 .99,.18 .97,.38 C.95,.55 1,.7 .95,.86 C.9,1 .74,.98 .6,.96 C.44,.94 .3,1 .17,.95 C.04,.9 .12,.76 .08,.62 Z"/></clipPath>
-    <clipPath id="blob-b" clipPathUnits="objectBoundingBox"><path d="M.02,.7 C0,.5 .1,.38 .26,.36 C.4,.34 .44,.2 .6,.14 C.78,.07 .96,.12 .99,.3 C1,.5 .98,.66 .97,.8 C.96,.96 .8,.99 .62,.98 C.44,.97 .28,1 .14,.97 C.03,.94 .03,.84 .02,.7 Z"/></clipPath>
-    <clipPath id="blob-c" clipPathUnits="objectBoundingBox"><path d="M.06,.3 C.1,.1 .3,.02 .46,.12 C.56,.18 .6,.06 .74,.04 C.92,.02 1,.2 .98,.4 C.96,.58 1,.74 .94,.88 C.86,1 .66,.96 .5,.97 C.32,.98 .12,1 .05,.86 C0,.72 .03,.5 .06,.3 Z"/></clipPath>
-    <clipPath id="blob-d" clipPathUnits="objectBoundingBox"><path d="M.04,.56 C.06,.34 .22,.3 .3,.18 C.38,.04 .58,0 .72,.08 C.88,.17 .82,.36 .94,.48 C1,.58 .98,.8 .9,.9 C.8,1 .62,.95 .48,.98 C.32,1 .16,.97 .08,.86 C.01,.76 .03,.66 .04,.56 Z"/></clipPath>
-    <clipPath id="blob-cloud" clipPathUnits="objectBoundingBox"><path d="M.1,.98 C.02,.96 0,.8 .06,.68 C.0,.52 .1,.38 .24,.4 C.24,.2 .4,.06 .56,.14 C.64,.02 .84,.0 .92,.14 C1,.26 .98,.42 .94,.52 C1,.66 .98,.86 .88,.96 C.8,1 .6,.98 .44,.99 C.3,1 .18,1 .1,.98 Z"/></clipPath>
-  </defs>
-</svg>
+<!-- 02 A day in the life: tap a time on the clock to see that part of the day -->
+<section class="sec day3" id="day" aria-labelledby="day-title">
+  <div class="wrap">
+    <p class="script red mid eyebrow-s reveal-write center-t">A day in the life,</p>
+    <h2 id="day-title" class="big-title words center-t">Your child at Swaram</h2>
+    <p class="clk-hint center-t">(tap a time on the clock)</p>
+    <div class="clk-grid">
+      <div class="clk" id="clk">
+        <svg class="clk-face" viewBox="0 0 400 400" aria-hidden="true">
+          <path class="clk-rim" d="M200 18 C302 16 384 96 382 200 C381 302 300 384 198 382 C96 381 17 300 18 199 C19 99 99 20 200 18 Z"/>
+          <path class="clk-rim2" d="M200 40 C290 39 361 110 360 201 C359 289 289 361 200 360 C110 360 40 290 41 199 C42 110 111 41 200 40 Z"/>
+          <g class="clk-ticks"></g>
+          <g class="clk-hand clk-hour" id="clk-hour"><path d="M200 200 L200 118"/></g>
+          <g class="clk-hand clk-min" id="clk-min"><path d="M200 200 L200 78"/></g>
+          <circle class="clk-dot" cx="200" cy="200" r="9"/>
+        </svg>
+        <div class="clk-pins" id="clk-pins"></div>
+      </div>
+      <article class="clk-card" id="clk-card" aria-live="polite">
+        <p class="clk-time" id="clk-time"></p>
+        <h3 id="clk-title"></h3>
+        <p id="clk-text"></p>
+        <div class="blob blob-cloud clk-ph"><img id="clk-img" src="img/photos/day-morning.webp" alt="" width="900" height="675"></div>
+      </article>
+    </div>
+  </div>
+</section>
 
-<!-- 03 Dear Parents -->
+<!-- 03 About us -->
 <section class="sec" id="story" aria-labelledby="letter-title">
   <img class="wash" src="img/wash.webp" alt="" style="--top:4%; --left:38%; --rot:4deg">
   <div class="wrap about">
     <div class="about-copy">
+      <p class="script red mid eyebrow-s reveal-write">About us,</p>
       <h2 id="letter-title" class="script big reveal-write">Dear Parents,</h2>
       <div class="lines">
         <p>Imagine you are a 3-year-old child again. And today is your first day at school.</p>
@@ -93,6 +111,17 @@
     </figure>
   </div>
 </section>
+
+<!-- shapes for the photo blobs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <clipPath id="blob-a" clipPathUnits="objectBoundingBox"><path d="M.08,.62 C.02,.42 .2,.3 .34,.33 C.46,.36 .5,.12 .66,.08 C.84,.03 .99,.18 .97,.38 C.95,.55 1,.7 .95,.86 C.9,1 .74,.98 .6,.96 C.44,.94 .3,1 .17,.95 C.04,.9 .12,.76 .08,.62 Z"/></clipPath>
+    <clipPath id="blob-b" clipPathUnits="objectBoundingBox"><path d="M.02,.7 C0,.5 .1,.38 .26,.36 C.4,.34 .44,.2 .6,.14 C.78,.07 .96,.12 .99,.3 C1,.5 .98,.66 .97,.8 C.96,.96 .8,.99 .62,.98 C.44,.97 .28,1 .14,.97 C.03,.94 .03,.84 .02,.7 Z"/></clipPath>
+    <clipPath id="blob-c" clipPathUnits="objectBoundingBox"><path d="M.06,.3 C.1,.1 .3,.02 .46,.12 C.56,.18 .6,.06 .74,.04 C.92,.02 1,.2 .98,.4 C.96,.58 1,.74 .94,.88 C.86,1 .66,.96 .5,.97 C.32,.98 .12,1 .05,.86 C0,.72 .03,.5 .06,.3 Z"/></clipPath>
+    <clipPath id="blob-d" clipPathUnits="objectBoundingBox"><path d="M.04,.56 C.06,.34 .22,.3 .3,.18 C.38,.04 .58,0 .72,.08 C.88,.17 .82,.36 .94,.48 C1,.58 .98,.8 .9,.9 C.8,1 .62,.95 .48,.98 C.32,1 .16,.97 .08,.86 C.01,.76 .03,.66 .04,.56 Z"/></clipPath>
+    <clipPath id="blob-cloud" clipPathUnits="objectBoundingBox"><path d="M.1,.98 C.02,.96 0,.8 .06,.68 C.0,.52 .1,.38 .24,.4 C.24,.2 .4,.06 .56,.14 C.64,.02 .84,.0 .92,.14 C1,.26 .98,.42 .94,.52 C1,.66 .98,.86 .88,.96 C.8,1 .6,.98 .44,.99 C.3,1 .18,1 .1,.98 Z"/></clipPath>
+  </defs>
+</svg>
 
 <!-- 04 How & why: VOICE -->
 <section class="sec" id="method" aria-labelledby="voice-title">
@@ -271,34 +300,6 @@
   </div>
 </section>
 
-<!-- Last: A day in the life. Tap a time on the clock to see that part of the day. -->
-<section class="sec day3" id="day" aria-labelledby="day-title">
-  <div class="wrap">
-    <p class="script red mid eyebrow-s reveal-write center-t">A day in the life,</p>
-    <h2 id="day-title" class="big-title words center-t">Your child at Swaram</h2>
-    <p class="clk-hint center-t">(tap a time on the clock)</p>
-    <div class="clk-grid">
-      <div class="clk" id="clk">
-        <svg class="clk-face" viewBox="0 0 400 400" aria-hidden="true">
-          <path class="clk-rim" d="M200 18 C302 16 384 96 382 200 C381 302 300 384 198 382 C96 381 17 300 18 199 C19 99 99 20 200 18 Z"/>
-          <path class="clk-rim2" d="M200 40 C290 39 361 110 360 201 C359 289 289 361 200 360 C110 360 40 290 41 199 C42 110 111 41 200 40 Z"/>
-          <g class="clk-ticks"></g>
-          <g class="clk-hand clk-hour" id="clk-hour"><path d="M200 200 L200 118"/></g>
-          <g class="clk-hand clk-min" id="clk-min"><path d="M200 200 L200 78"/></g>
-          <circle class="clk-dot" cx="200" cy="200" r="9"/>
-        </svg>
-        <div class="clk-pins" id="clk-pins"></div>
-      </div>
-      <article class="clk-card" id="clk-card" aria-live="polite">
-        <p class="clk-time" id="clk-time"></p>
-        <h3 id="clk-title"></h3>
-        <p id="clk-text"></p>
-        <div class="blob blob-cloud clk-ph"><img id="clk-img" src="img/photos/day-morning.webp" alt="" width="900" height="675"></div>
-      </article>
-    </div>
-  </div>
-</section>
-
 </main>
 
 <footer class="site-foot">
@@ -316,7 +317,7 @@
     </div>
   </div>
   <div class="wrap sf-bottom">
-    <nav class="sf-nav" aria-label="Footer"><a href="#story">Dear Parents</a><a href="#method">Our method</a><a href="#programs">Programs</a><a href="#founder">Founder's note</a><a href="#day">A day at Swaram</a></nav>
+    <nav class="sf-nav" aria-label="Footer"><a href="#day">A day at Swaram</a><a href="#story">About us</a><a href="#method">Our method</a><a href="#programs">Programs</a><a href="#founder">Founder's note</a></nav>
     <span>&copy; 2026 Swaram Early Years</span>
   </div>
 </footer>
