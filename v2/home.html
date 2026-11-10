@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&family=Intel+One+Mono:wght@400;700&family=JetBrains+Mono:wght@100..800&family=La+Belle+Aurore&display=swap">
-<link rel="stylesheet" href="styles.css?v=32">
+<link rel="stylesheet" href="styles.css?v=40">
 </head>
 <body class="home is-loading">
 
@@ -30,12 +30,18 @@
     <a class="nav-logo" href="#top" aria-label="Swaram Early Years, back to the top"><img src="img/swaram-mark.webp" alt=""></a>
     <a class="brand nav-brand" href="#top" id="brand">[Swaram Early Years]</a>
   </div>
-  <nav aria-label="Main">
-    <a href="#day">Day<img src="img/crayon-1.webp" alt=""></a>
-    <a href="#programs">Programs<img src="img/crayon-2.webp" alt=""></a>
-    <a href="#teachers">Teachers<img src="img/crayon-3.webp" alt=""></a>
-    <a href="#visit">Visit<img src="img/crayon-4.webp" alt=""></a>
+  <nav aria-label="Main" id="nav-links">
+    <a href="#story">Our story<img src="img/crayon-1.webp" alt=""></a>
+    <a href="#what">Our goal<img src="img/crayon-2.webp" alt=""></a>
+    <a href="#programs">Programs<img src="img/crayon-3.webp" alt=""></a>
+    <a href="#founder">Founder<img src="img/crayon-1.webp" alt=""></a>
+    <a href="#visit">Visit<img src="img/crayon-2.webp" alt=""></a>
+    <a href="#day">A day<img src="img/crayon-3.webp" alt=""></a>
   </nav>
+  <div class="nav-right">
+    <a class="nav-call" href="#visit" data-enquire>Schedule a call</a>
+    <button class="nav-menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+  </div>
 </header>
 
 <main>
@@ -50,14 +56,13 @@
   </div>
   <div class="hero-shade" aria-hidden="true"></div>
   <div class="wrap hero-copy">
-    <h1 id="hero-title" class="words hero-only">Where every child discovers their own voice.</h1>
+    <h1 id="hero-title" class="words hero-only">Where every child discovers their own voice</h1>
   </div>
-  <a class="scroll-cue" href="#day" aria-label="Scroll down"><span></span></a>
+  <a class="scroll-cue" href="#story" aria-label="Scroll down"><span></span></a>
 </section>
 
-<!-- 02 A day at Swaram -->
-<section class="sec day2" id="day" aria-labelledby="day-title">
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<!-- shapes for the photo blobs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <clipPath id="blob-a" clipPathUnits="objectBoundingBox"><path d="M.08,.62 C.02,.42 .2,.3 .34,.33 C.46,.36 .5,.12 .66,.08 C.84,.03 .99,.18 .97,.38 C.95,.55 1,.7 .95,.86 C.9,1 .74,.98 .6,.96 C.44,.94 .3,1 .17,.95 C.04,.9 .12,.76 .08,.62 Z"/></clipPath>
     <clipPath id="blob-b" clipPathUnits="objectBoundingBox"><path d="M.02,.7 C0,.5 .1,.38 .26,.36 C.4,.34 .44,.2 .6,.14 C.78,.07 .96,.12 .99,.3 C1,.5 .98,.66 .97,.8 C.96,.96 .8,.99 .62,.98 C.44,.97 .28,1 .14,.97 C.03,.94 .03,.84 .02,.7 Z"/></clipPath>
@@ -66,42 +71,6 @@
     <clipPath id="blob-cloud" clipPathUnits="objectBoundingBox"><path d="M.1,.98 C.02,.96 0,.8 .06,.68 C.0,.52 .1,.38 .24,.4 C.24,.2 .4,.06 .56,.14 C.64,.02 .84,.0 .92,.14 C1,.26 .98,.42 .94,.52 C1,.66 .98,.86 .88,.96 C.8,1 .6,.98 .44,.99 C.3,1 .18,1 .1,.98 Z"/></clipPath>
   </defs>
 </svg>
-  <div class="wrap">
-    <p class="script red mid eyebrow-s reveal-write center-t">A day in the life,</p>
-    <h2 id="day-title" class="big-title words">A day at Swaram.</h2>
-    <svg class="tl2-doodle fade" viewBox="0 0 40 60" aria-hidden="true"><path d="M20 4c6 8 8 18 8 30H12C12 22 14 12 20 4z"/><path d="M12 34l-6 10h8M28 34l6 10h-8M16 48h8v6h-8z"/></svg>
-    <ol class="tl2">
-      <li class="tl2-row">
-        <span class="tl2-time fade">Morning</span>
-        <article class="tl2-card slide">
-          <div class="tl2-copy"><h3>Movement play &amp; planning</h3><p>The sandpit and garden first thing, then children plan and draw their own day.</p></div>
-          <div class="blob blob-cloud tl2-ph"><img src="img/photos/day-morning.webp" alt="Children playing in a sandpit" loading="lazy" width="900" height="675"><span class="ph-hint" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-9 7"/></svg>Morning play</span></div>
-        </article>
-      </li>
-      <li class="tl2-row flip">
-        <span class="tl2-time fade">Mid-morning</span>
-        <article class="tl2-card slide">
-          <div class="tl2-copy"><h3>Circle time &amp; fruit break</h3><p>Songs, stories and a hundred questions, then fresh fruit shared on the mat.</p></div>
-          <div class="blob blob-cloud tl2-ph"><img src="img/photos/day-circle.webp" alt="Children sitting together in a circle, laughing" loading="lazy" width="900" height="675"><span class="ph-hint" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-9 7"/></svg>Circle time</span></div>
-        </article>
-      </li>
-      <li class="tl2-row">
-        <span class="tl2-time fade">Late morning</span>
-        <article class="tl2-card slide">
-          <div class="tl2-copy"><h3>Sensory play &amp; arts</h3><p>Sand, water and clay to explore, then dance, theatre, painting and drawing.</p></div>
-          <div class="blob blob-cloud tl2-ph"><img src="img/photos/day-arts.webp" alt="Two girls drawing at a table" loading="lazy" width="900" height="675"><span class="ph-hint" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-9 7"/></svg>Sensory play</span></div>
-        </article>
-      </li>
-      <li class="tl2-row flip">
-        <span class="tl2-time fade">Afternoon</span>
-        <article class="tl2-card slide">
-          <div class="tl2-copy"><h3>Lunch, stories &amp; free play</h3><p>A warm meal together, big books under the tree, and time to follow their own curiosity.</p></div>
-          <div class="blob blob-cloud tl2-ph"><img src="img/photos/day-lunch.webp" alt="Children eating lunch together" loading="lazy" width="900" height="675"><span class="ph-hint" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-9 7"/></svg>Story time</span></div>
-        </article>
-      </li>
-    </ol>
-  </div>
-</section>
 
 <!-- 03 Dear Parents -->
 <section class="sec" id="story" aria-labelledby="letter-title">
@@ -115,6 +84,7 @@
         <p>You discover the world, one insect at a time. Finding your own way is the only way at school. Your little feet wander, your little hands experiment, and you find your own ways to express yourself.</p>
         <p>On the last day before the summer holidays, all you want is to not leave school. And until you're back, your school waits: to hear your stories, read your little letters, and discover the world again, through your eyes.</p>
       </div>
+      <a class="cta story-call fade" href="#visit" data-enquire>Schedule a call <span aria-hidden="true">&rarr;</span></a>
     </div>
     <figure class="frame pop" style="--r:3deg">
       <svg class="scallop" viewBox="0 0 400 460" aria-hidden="true"><path id="scal" d=""/><rect x="44" y="44" width="312" height="372" rx="2"/><rect x="58" y="58" width="284" height="344" rx="2"/></svg>
@@ -125,7 +95,7 @@
 </section>
 
 <!-- 04 How & why: VOICE -->
-<section class="sec" aria-labelledby="voice-title">
+<section class="sec" id="method" aria-labelledby="voice-title">
   <div class="wrap center">
     <h2 id="voice-title" class="headline words">Our method</h2>
     <div class="voice" id="voice">
@@ -135,7 +105,6 @@
       <div class="v drag-soft" style="--c:#D33A3A; --r:8deg"><b>C</b><span>Creativity</span></div>
       <div class="v drag-soft" style="--c:#7E6BC8; --r:-5deg"><b>E</b><span>Exploration</span></div>
     </div>
-    <p class="hint">(psst, you can move the letters too)</p>
     <div class="why-note fade" style="--r:-1.2deg">
       <span class="tape" aria-hidden="true"></span>
       <p class="script red mid">Why?</p>
@@ -145,28 +114,32 @@
   </div>
 </section>
 
-<!-- 05 What: Discovering their inner voice -->
-<section class="sec iv" id="what" aria-labelledby="what-title">
+<!-- 05 Our goal: a child with four layers of relationships -->
+<section class="sec goal" id="what" aria-labelledby="what-title">
   <div class="wrap">
-    <p class="script red mid eyebrow-s reveal-write center-t">What?</p>
-    <h2 id="what-title" class="big-title words center-t">Discovering their inner voice.</h2>
-    <div class="iv-grid">
-      <article class="iv-card rise" style="--r:-1.2deg">
-        <h3>Self</h3><p>Relationship with self</p>
-        <div class="blob blob-a iv-ph"><img src="img/photos/iv-self.webp" alt="A boy playing with a pinwheel" loading="lazy" width="900" height="675"><span class="ph-hint" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-9 7"/></svg>Self</span></div>
-      </article>
-      <article class="iv-card rise" style="--r:1deg">
-        <h3>Nature</h3><p>Relationship with nature</p>
-        <div class="blob blob-b iv-ph"><img src="img/photos/iv-nature.webp" alt="Children exploring plants in a garden" loading="lazy" width="900" height="675"><span class="ph-hint" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-9 7"/></svg>Nature</span></div>
-      </article>
-      <article class="iv-card rise" style="--r:-.8deg">
-        <h3>Society</h3><p>Relationship with society</p>
-        <div class="blob blob-c iv-ph"><img src="img/photos/iv-society.webp" alt="A group of children playing together in the sand" loading="lazy" width="900" height="675"><span class="ph-hint" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-9 7"/></svg>Society</span></div>
-      </article>
-      <article class="iv-card rise" style="--r:1.3deg">
-        <h3>Career</h3><p>Relationship with career</p>
-        <div class="blob blob-d iv-ph"><img src="img/photos/iv-career.webp" alt="A girl pouring water at a practical-life tray" loading="lazy" width="900" height="675"><span class="ph-hint" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-9 7"/></svg>Career</span></div>
-      </article>
+    <p class="script red mid eyebrow-s reveal-write center-t">Our goal,</p>
+    <h2 id="what-title" class="big-title words center-t">To help your child develop</h2>
+    <div class="goal-grid">
+      <div class="goal-art fade">
+        <svg class="goal-svg" viewBox="0 0 520 520" role="img" aria-label="A child in a graduation cap at the centre of four rings: self, nature, society and career">
+          <circle class="ring r-career" data-k="3" cx="260" cy="260" r="246"/>
+          <circle class="ring r-society" data-k="2" cx="260" cy="260" r="192"/>
+          <circle class="ring r-nature" data-k="1" cx="260" cy="260" r="140"/>
+          <circle class="ring r-self" data-k="0" cx="260" cy="260" r="90"/>
+          <g class="goal-dash" aria-hidden="true"><circle cx="260" cy="260" r="219"/><circle cx="260" cy="260" r="166"/><circle cx="260" cy="260" r="115"/></g>
+          <g class="kid-bob"><g class="goal-kid" transform="translate(185 158) scale(.47)"><path d="M30 380 C38 304 96 272 160 272 C224 272 282 304 290 380 Z" fill="#fff" stroke="#141414" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M124 278 Q160 304 196 278" fill="none" stroke="#141414" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M138 236 L138 280 M182 236 L182 280" fill="none" stroke="#141414" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="78" cy="182" rx="19" ry="24" fill="#fff" stroke="#141414" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="242" cy="182" rx="19" ry="24" fill="#fff" stroke="#141414" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="160" cy="172" rx="80" ry="84" fill="#fff" stroke="#141414" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M96 118 Q160 92 224 118 L222 142 Q160 120 98 142 Z" fill="#141414" stroke="#141414" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 100 L160 58 L280 100 L160 142 Z" fill="#141414" stroke="#141414" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M160 100 L250 116 L250 160" fill="none" stroke="#F2B630" stroke-width="6" stroke-linecap="round"/><rect x="241" y="156" width="18" height="26" rx="5" fill="#F2B630"/><circle cx="134" cy="196" r="6" fill="#141414"/><circle cx="186" cy="196" r="6" fill="#141414"/><path d="M160 204 q5 8 0 12" fill="none" stroke="#141414" stroke-width="5" stroke-linecap="round"/><path d="M140 228 Q160 246 180 228" fill="none" stroke="#141414" stroke-width="6" stroke-linecap="round"/></g></g>
+        </svg>
+        <span class="gtag t-self" data-k="0" style="--c:#F2B630"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.6A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.4C19 15.6 12 20 12 20z"/></svg>Self</span>
+        <span class="gtag t-nature" data-k="1" style="--c:#4C9C8F"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19c3-4 6-7 10-9"/></svg>Nature</span>
+        <span class="gtag t-society" data-k="2" style="--c:#EF6A2B"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="7.5" r="2.6"/><circle cx="16" cy="7.5" r="2.6"/><path d="M3.5 19c0-3.4 2-5.6 4.5-5.6S12 15 12 15s1.5-1.6 4-1.6 4.5 2.2 4.5 5.6"/></svg>Society</span>
+        <span class="gtag t-career" data-k="3" style="--c:#7E6BC8"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>Career</span>
+      </div>
+      <ol class="goal-list">
+        <li data-k="0" tabindex="0" style="--c:#F2B630;--bg:#FFF3CF"><span class="gi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.6A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.4C19 15.6 12 20 12 20z"/></svg></span><span class="gn">01</span><b>Self</b><span class="gs">Relationship with self</span></li>
+        <li data-k="1" tabindex="0" style="--c:#4C9C8F;--bg:#E2F3EC"><span class="gi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19c3-4 6-7 10-9"/></svg></span><span class="gn">02</span><b>Nature</b><span class="gs">Relationship with nature</span></li>
+        <li data-k="2" tabindex="0" style="--c:#EF6A2B;--bg:#FFE6DA"><span class="gi"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="7.5" r="2.6"/><circle cx="16" cy="7.5" r="2.6"/><path d="M3.5 19c0-3.4 2-5.6 4.5-5.6S12 15 12 15s1.5-1.6 4-1.6 4.5 2.2 4.5 5.6"/></svg></span><span class="gn">03</span><b>Society</b><span class="gs">Relationship with society</span></li>
+        <li data-k="3" tabindex="0" style="--c:#7E6BC8;--bg:#EEE8FB"><span class="gi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg></span><span class="gn">04</span><b>Career</b><span class="gs">Relationship with career</span></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -176,7 +149,7 @@
   <div class="wrap hl">
     <div class="hl-body">
       <p class="script red mid eyebrow-s reveal-write">Beyond the classroom,</p>
-    <h2 id="hl-title" class="headline words">What we love doing.</h2>
+    <h2 id="hl-title" class="headline words">What we love doing</h2>
       <div class="stickies">
         <article class="sticky fade" style="--r:-2deg; --bg:#FFE57A; --ink2:#5a4300"><h3 class="script">Nature play</h3><ul><li>Animal friends</li><li>Farming</li><li>Nature walks</li></ul></article>
         <article class="sticky fade" style="--r:1.5deg; --bg:#FFC9B8; --ink2:#6b2510"><h3 class="script">Indian culture</h3><ul><li>Idol making</li><li>Yakshagana</li><li>Our festivals</li></ul></article>
@@ -193,7 +166,7 @@
   <div class="wrap pg-head">
     <div class="pg-title">
       <p class="script red mid eyebrow-s reveal-write">Explore,</p>
-      <h2 id="prog-title" class="big-title words">Our programs.</h2>
+      <h2 id="prog-title" class="big-title words">Our programs</h2>
     </div>
     <div class="pg-nav">
       <button type="button" class="pg-btn" data-dir="-1" aria-label="Previous program"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
@@ -230,28 +203,15 @@
   </div>
 </section>
 
-<!-- 08 Teachers -->
-<section class="sec" id="teachers" aria-labelledby="teach-title">
-  <div class="wrap teach">
-    <div>
-      <p class="script red mid eyebrow-s reveal-write">Teachers at Swaram,</p>
-    <h2 id="teach-title" class="headline words">Someone who knows your child by heart.</h2>
-      <p class="lead fade">Small groups mean every child is seen and heard, every single day.</p>
-    </div>
-    <div class="facts">
-      <div class="fact fade"><b class="script red">1:8</b><span>adult-to-child ratio</span></div>
-      <div class="fact fade"><b class="script red">Home</b><span>visits for every family</span></div>
-    </div>
-  </div>
-</section>
-
 <!-- 09 Founder's note -->
 <section class="sec" id="founder" aria-labelledby="founder-title">
   <img class="wash" src="img/wash.webp" alt="" style="--top:20%; --left:-25%; --rot:-4deg">
   <div class="wrap">
     <p class="script red mid eyebrow-s reveal-write center-t">Founder's note,</p>
-    <h2 id="founder-title" class="headline words center-t">Every child has a voice within.</h2>
-    <article class="letter fade" style="--r:.5deg">
+    <h2 id="founder-title" class="headline words center-t">Every child has a voice within</h2>
+    <div class="env fade" id="env" role="button" tabindex="0" aria-expanded="false" aria-controls="letter" aria-label="Open the founder's letter">
+      <div class="env-back" aria-hidden="true"></div>
+    <article class="letter" id="letter">
       <img class="stamp" src="img/swaram-mark.webp" alt="">
       <p class="letter-from">Swaram Early Years · Bangalore</p>
       <p class="script red letter-hi">Dear parents,</p>
@@ -267,6 +227,16 @@
       <p class="script letter-name">Lalith Dhanush</p>
       <p class="letter-role">Founder, Swaram · <a href="https://www.instagram.com/lalithdhanush/" target="_blank" rel="noopener">@lalithdhanush</a></p>
     </article>
+      <div class="env-pocket" aria-hidden="true"></div>
+      <div class="env-flap" aria-hidden="true"></div>
+      <span class="env-seal" aria-hidden="true"><img src="img/swaram-mark.webp" alt=""></span>
+      <p class="env-label" aria-hidden="true">A note from our founder <span>· tap to open</span></p>
+    </div>
+    <a class="ig-card fade" href="https://www.instagram.com/lalithdhanush/" target="_blank" rel="noopener">
+      <span class="ig-photo"><span class="ig-initials" aria-hidden="true">LD</span><!-- photo goes here: <img src="img/lalith.webp" alt="Lalith Dhanush"> --></span>
+      <span class="ig-text"><b>Lalith Dhanush</b><span>Founder, Swaram · @lalithdhanush</span></span>
+      <span class="ig-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" class="dot"/></svg>Follow on Instagram</span>
+    </a>
   </div>
 </section>
 
@@ -277,7 +247,7 @@
   <div class="tw-fade tw-fade-top" aria-hidden="true"></div>
   <div class="tw-fade tw-fade-bot" aria-hidden="true"></div>
   <div class="tw-copy">
-    <h2 id="look-title" class="tw-title"><span class="tw-a tw-line">Let your</span> <span class="tw-line"><span class="tw-a">children</span> <span class="tw-b">see</span></span> <span class="tw-b tw-line">the true</span> <span class="tw-b tw-line">world.</span></h2>
+    <h2 id="look-title" class="tw-title"><span class="tw-a tw-line">We help</span> <span class="tw-line"><span class="tw-a">every child</span></span> <span class="tw-b tw-line">discover their</span> <span class="tw-b tw-line">inner voice</span></h2>
     <p class="tw-hint">(move your mouse from left to right, or tilt your phone)</p>
   </div>
 </section>
@@ -287,7 +257,7 @@
   <div class="wrap visit-grid">
     <img class="postbox pop" src="img/postbox.webp" alt="" style="--r:-2deg">
     <div class="visit-copy">
-      <h2 id="visit-title" class="script huge reveal-write">Book a visit,<br>&nbsp;&nbsp;&nbsp;come say hello!</h2>
+      <h2 id="visit-title" class="script huge reveal-write">Schedule a call,<br>&nbsp;&nbsp;&nbsp;come say hello!</h2>
       <p class="fade">Share a few details and we'll call you to plan your visit.</p>
       <p class="kv fade"><i class="script red">Where:</i> #263, BEML Layout 3rd Stage, Rajarajeshwari Nagar, Bengaluru 560098</p>
       <p class="kv fade"><i class="script red">Who:</i> children aged 2 to 5</p>
@@ -296,21 +266,68 @@
         <iframe title="Map: #263, BEML Layout 3rd Stage, Rajarajeshwari Nagar, Bengaluru" src="https://www.google.com/maps?q=12.9200912,77.5184101&amp;z=17&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
         <a class="map-open" href="https://maps.app.goo.gl/qQpeKcWLgPnXxhs28" target="_blank" rel="noopener">Open in Google Maps <span aria-hidden="true">↗</span></a>
       </div>
-      <div class="form-card fade"><div class="wform" data-form="section"></div></div>
+      <a class="cta visit-call fade" href="#visit" data-enquire>Schedule a call <span aria-hidden="true">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- Last: A day in the life. Tap a time on the clock to see that part of the day. -->
+<section class="sec day3" id="day" aria-labelledby="day-title">
+  <div class="wrap">
+    <p class="script red mid eyebrow-s reveal-write center-t">A day in the life,</p>
+    <h2 id="day-title" class="big-title words center-t">Your child at Swaram</h2>
+    <p class="clk-hint center-t">(tap a time on the clock)</p>
+    <div class="clk-grid">
+      <div class="clk" id="clk">
+        <svg class="clk-face" viewBox="0 0 400 400" aria-hidden="true">
+          <path class="clk-rim" d="M200 18 C302 16 384 96 382 200 C381 302 300 384 198 382 C96 381 17 300 18 199 C19 99 99 20 200 18 Z"/>
+          <path class="clk-rim2" d="M200 40 C290 39 361 110 360 201 C359 289 289 361 200 360 C110 360 40 290 41 199 C42 110 111 41 200 40 Z"/>
+          <g class="clk-ticks"></g>
+          <g class="clk-hand clk-hour" id="clk-hour"><path d="M200 200 L200 118"/></g>
+          <g class="clk-hand clk-min" id="clk-min"><path d="M200 200 L200 78"/></g>
+          <circle class="clk-dot" cx="200" cy="200" r="9"/>
+        </svg>
+        <div class="clk-pins" id="clk-pins"></div>
+      </div>
+      <article class="clk-card" id="clk-card" aria-live="polite">
+        <p class="clk-time" id="clk-time"></p>
+        <h3 id="clk-title"></h3>
+        <p id="clk-text"></p>
+        <div class="blob blob-cloud clk-ph"><img id="clk-img" src="img/photos/day-morning.webp" alt="" width="900" height="675"></div>
+      </article>
     </div>
   </div>
 </section>
 
 </main>
 
-<footer class="foot">
-  <p class="brand small">[<b>S</b>wa<b>ra</b>m <b>E</b>ar<b>ly</b> Y<b>ea</b>rs]</p>
-  <p>Where every child discovers their own voice. · Bangalore · Ages 2 to 5</p>
-  <p class="dim">© 2026 Swaram Early Years</p>
+<footer class="site-foot">
+  <div class="wrap sf-top">
+    <div class="sf-brand">
+      <a class="sf-logo" href="#top" aria-label="Swaram Early Years, back to the top"><img src="img/swaram-mark.webp" alt=""><span class="brand small">[<b>S</b>wa<b>ra</b>m <b>E</b>ar<b>ly</b> Y<b>ea</b>rs]</span></a>
+      <p class="sf-tag">Where every child discovers their own voice</p>
+    </div>
+    <div class="sf-visit">
+      <p>#263, BEML Layout 3rd Stage, Rajarajeshwari Nagar, Bengaluru 560098</p>
+      <div class="sf-actions">
+        <a class="cta sf-call" href="#visit" data-enquire>Schedule a call <span aria-hidden="true">&rarr;</span></a>
+        <a class="sf-link" href="https://maps.app.goo.gl/qQpeKcWLgPnXxhs28" target="_blank" rel="noopener">Get directions &nearr;</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap sf-bottom">
+    <nav class="sf-nav" aria-label="Footer"><a href="#story">Dear Parents</a><a href="#method">Our method</a><a href="#programs">Programs</a><a href="#founder">Founder's note</a><a href="#day">A day at Swaram</a></nav>
+    <span>&copy; 2026 Swaram Early Years</span>
+  </div>
 </footer>
 
 <script src="app.js?v=10"></script>
 <script src="enquiry.js?v=2"></script>
 <script src="truewld.js?v=7"></script>
+<script src="founder.js?v=1"></script>
+<script src="piano.js?v=1"></script>
+<script src="dayclock.js?v=2"></script>
+<script src="goal.js?v=2"></script>
+<script src="navmenu.js?v=1"></script>
 </body>
 </html>

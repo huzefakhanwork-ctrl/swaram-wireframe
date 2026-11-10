@@ -63,7 +63,7 @@
         })
         .then(function (r) { if (!r.ok) throw new Error("send"); return r.json(); })
         .then(function () {
-          holder.innerHTML = '<div class="done"><p class="script red">Thank you!</p><h3>We got your enquiry.</h3><p>We\'ll call you soon to plan your visit to Swaram.</p></div>';
+          holder.innerHTML = '<div class="done"><p class="script red">Thank you!</p><h3>We got your enquiry</h3><p>We\'ll call you soon to plan your visit to Swaram.</p></div>';
           try { sessionStorage.setItem("swq-auto", "1"); } catch (err) {}
         })
         .catch(function () { btn.disabled = false; msg.textContent = "Sorry, that didn't go through. Please try again in a moment."; });
