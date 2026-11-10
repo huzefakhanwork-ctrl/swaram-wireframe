@@ -1,7 +1,7 @@
 /* Swaram enquiry form: the same Wix form as the Framer site.
    - Fills every <div class="wform"> on the page (the Visit section) with the form.
    - Adds a pop-up with the same form. It opens by itself once per visit at 50% scroll,
-     and from any link or button with data-enquire (e.g. the hero's "Book a visit").
+     and from any link or button with data-enquire (e.g. a "Schedule a call" button).
    - Sends to the "Swaram enquiry" form in the Swaram Wix dashboard. */
 (function () {
   var FORM_ID = "2ab3223f-e514-4bc0-a72b-2b7fb319884c", CLIENT_ID = "c4e9078a-3b2d-4b7b-8b00-d4a29d9c2c05";
@@ -22,7 +22,7 @@
       + f("cn", "Child's name *", "child_name_axfoeh", "required")
       + f("cd", "Child's date of birth *", "child_dob_mshtv9", 'type="date" required max="' + new Date().toISOString().slice(0, 10) + '"')
       + f("em", "Email ID *", "email_pquo1c", 'type="email" required data-email autocomplete="email" placeholder="you@example.com"', true)
-      + '</div><button class="send" type="submit">Send enquiry <span aria-hidden="true">→</span></button><p class="msg" role="status"></p></form>';
+      + '</div><button class="send" type="submit">Schedule a call <span aria-hidden="true">→</span></button><p class="msg" role="status"></p></form>';
   }
 
   function phone(v) { var d = v.replace(/[^\d+]/g, ""); if (/^\d{10}$/.test(d)) d = "+91" + d; if (/^91\d{10}$/.test(d)) d = "+" + d; return d; }
@@ -77,7 +77,7 @@
   var box = document.createElement("div");
   box.className = "swq"; box.setAttribute("role", "dialog"); box.setAttribute("aria-modal", "true"); box.setAttribute("aria-labelledby", "swq-title");
   box.innerHTML = '<div class="swq-card"><button class="swq-x" type="button" aria-label="Close">×</button>'
-    + '<p class="script red swq-hi">Loving what you see?</p><h2 id="swq-title">Book a visit to Swaram</h2>'
+    + '<p class="script red swq-hi">Loving what you see?</p><h2 id="swq-title">Schedule a call with Swaram</h2>'
     + '<p class="swq-lead">Share a few details and we\'ll call you to plan your visit.</p><div class="wform swq-form"></div></div>';
   document.body.appendChild(box);
   mount(box.querySelector(".swq-form"));
@@ -98,7 +98,7 @@
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && box.classList.contains("open")) close(); });
   window.SwaramForm = { open: open, close: close };
 
-  // every "Book a visit" style button opens the pop-up
+  // every "Schedule a call" button (data-enquire) opens the pop-up
   document.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest("[data-enquire]");
     if (!a) return;
