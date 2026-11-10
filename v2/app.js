@@ -53,6 +53,7 @@
       setTimeout(function () {
         loader.classList.add("done");
         document.body.classList.remove("is-loading");
+        if (!cover) watch();          // main page: start the scroll-in animations once the loader lifts
         setTimeout(function () { if (cover) cover.classList.add("ready"); }, 300);
       }, 250);
     };

@@ -2,10 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<script>
-  // open or reload this page directly -> start at the sketchbook (index.html). Coming from the sketchbook sets the pass.
-  (function () { try { if (sessionStorage.getItem("swaram-pass") !== "1") { location.replace("index.html"); return; } sessionStorage.removeItem("swaram-pass"); } catch (e) {} try { history.scrollRestoration = "manual"; } catch (e) {} })();
-</script>
+<script>try { history.scrollRestoration = "manual"; } catch (e) {}</script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Swaram Early Years · Preschool in Bangalore</title>
@@ -15,20 +12,29 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Intel+One+Mono:wght@400;700&family=JetBrains+Mono:wght@100..800&family=La+Belle+Aurore&display=swap">
 <link rel="stylesheet" href="styles.css?v=30">
 </head>
-<body class="home">
+<body class="home is-loading">
+
+<!-- Preloader: the logo, the name typed out, and a crayon drawing the line -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-in">
+    <img class="loader-logo" src="img/swaram-mark.webp" alt="">
+    <p class="loader-word" data-type="[Swaram Early Years]"></p>
+    <div class="loader-bar"><span></span><img src="img/crayon-1.webp" alt=""></div>
+  </div>
+</div>
 <div class="page-in" aria-hidden="true"></div>
 
 <!-- Top bar -->
 <header class="nav show" id="nav">
   <div class="nav-left">
-    <a class="nav-logo" href="index.html" aria-label="Back to the Swaram sketchbook"><img src="img/swaram-mark.webp" alt=""></a>
-    <a class="brand nav-brand" href="index.html" id="brand">[Swaram Early Years]</a>
+    <a class="nav-logo" href="#top" aria-label="Swaram Early Years, back to the top"><img src="img/swaram-mark.webp" alt=""></a>
+    <a class="brand nav-brand" href="#top" id="brand">[Swaram Early Years]</a>
   </div>
   <nav aria-label="Main">
-    <a href="#day">Day<img src="img/pencil-1.webp" alt=""></a>
-    <a href="#programs">Programs<img src="img/pencil-2.webp" alt=""></a>
-    <a href="#teachers">Teachers<img src="img/pencil-3.webp" alt=""></a>
-    <a href="#visit">Visit<img src="img/pencil-4.webp" alt=""></a>
+    <a href="#day">Day<img src="img/crayon-1.webp" alt=""></a>
+    <a href="#programs">Programs<img src="img/crayon-2.webp" alt=""></a>
+    <a href="#teachers">Teachers<img src="img/crayon-3.webp" alt=""></a>
+    <a href="#visit">Visit<img src="img/crayon-4.webp" alt=""></a>
   </nav>
 </header>
 
@@ -305,7 +311,7 @@
   <p class="dim">© 2026 Swaram Early Years</p>
 </footer>
 
-<script src="app.js?v=9"></script>
+<script src="app.js?v=10"></script>
 <script src="enquiry.js?v=1"></script>
 <script src="truewld.js?v=7"></script>
 </body>

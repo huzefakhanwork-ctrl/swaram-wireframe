@@ -2,67 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Swaram Early Years · Preschool in Bangalore</title>
-<meta name="description" content="Swaram Early Years is a preschool in Bangalore for children aged 2 to 5, where every child discovers their own voice.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Intel+One+Mono:wght@400;700&family=JetBrains+Mono:wght@100..800&family=La+Belle+Aurore&display=swap">
-<link rel="stylesheet" href="styles.css?v=8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The site opens straight into the main page (the sketchbook intro is saved as index.sketchbook.html) -->
+<script>location.replace("home.html" + location.hash);</script>
+<meta http-equiv="refresh" content="0; url=home.html">
+<link rel="canonical" href="home.html">
 </head>
-<body class="is-loading entry">
-
-<!-- Preloader -->
-<div class="loader" id="loader" aria-hidden="true">
-  <div class="loader-in">
-    <img class="loader-logo" src="img/swaram-mark.webp" alt="">
-    <p class="loader-word" data-type="[Swaram Early Years]"></p>
-    <div class="loader-bar"><span></span><img src="img/pencil-1.webp" alt=""></div>
-  </div>
-</div>
-
-<!-- 00 Entry page: the sticker sketchbook -->
-<!-- Top bar -->
-<header class="nav show" id="nav">
-  <div class="nav-left">
-    <a class="nav-logo" href="index.html" aria-label="Back to the Swaram sketchbook"><img src="img/swaram-mark.webp" alt=""></a>
-    <a class="brand nav-brand" href="index.html" id="brand">[Swaram Early Years]</a>
-  </div>
-  <nav aria-label="Main">
-    <a href="home.html#day">Day<img src="img/pencil-1.webp" alt=""></a>
-    <a href="home.html#programs">Programs<img src="img/pencil-2.webp" alt=""></a>
-    <a href="home.html#teachers">Teachers<img src="img/pencil-3.webp" alt=""></a>
-    <a href="home.html#visit">Visit<img src="img/pencil-4.webp" alt=""></a>
-  </nav>
-</header>
-
-<section class="cover plain" id="cover" aria-label="Swaram Early Years">
-  <div class="stage">
-  <div class="book">
-    <img class="book-img" src="img/girl-book-sky.webp" alt="A girl peeking over a big green sketchbook, with a sticky note that says Swaram Early Years" width="1355" height="743">
-    <!-- left page -->
-    <a class="bk" href="home.html#day" style="--x:12.8%; --y:33.9%; --w:18.4%; --r:-5deg"><img src="img/label-day.webp" alt="A day at Swaram"></a>
-    <a class="bk hand" href="home.html#story" style="--x:32.3%; --y:32.6%; --w:13.3%; --r:4deg"><img src="img/hand-seed.webp" alt=""><span>Our story</span></a>
-    <a class="bk" href="home.html#what" style="--x:13.4%; --y:51.3%; --w:10.8%; --r:6deg"><img src="img/label-what.webp" alt="What we grow"></a>
-    <a class="bk" href="home.html#highlights" style="--x:25.5%; --y:52.8%; --w:9.9%; --r:-5deg"><img src="img/label-highlights.webp" alt="Highlights, beyond the classroom"></a>
-    <a class="bk" href="home.html#teachers" style="--x:36.0%; --y:57.8%; --w:12.2%; --r:3deg"><img src="img/label-teachers.webp" alt="Teachers"></a>
-    <!-- right page -->
-    <a class="bk" href="home.html#programs" style="--x:57.3%; --y:36.0%; --w:16.4%; --r:-3deg"><img src="img/label-programs.webp" alt="Our programs"></a>
-    <a class="bk hand" href="home.html#visit" style="--x:76.6%; --y:31.0%; --w:14.2%; --r:-6deg"><img src="img/hand-pencil.webp" alt=""><span>Book a visit</span></a>
-    <a class="bk" href="home.html#lookme" style="--x:58.1%; --y:52.8%; --w:13.6%; --r:-4deg"><img src="img/label-lookme.webp" alt="Look at me"></a>
-    <a class="bk" href="home.html#founder" style="--x:75.1%; --y:57.1%; --w:11.6%; --r:7deg"><img src="img/label-founder.webp" alt="Founder's note"></a>
-  </div>
-    <a class="cta visit-cta" href="home.html">Visit the website <span aria-hidden="true">→</span></a>
-    <p class="cover-cue">(or tap a sticker on her sketchbook)</p>
-  </div>
-</section>
-
-
-<script>
-  // links from the sketchbook into the site carry a one-time pass (see home.html); reloads start here again
-  try { history.scrollRestoration = "manual"; } catch (e) {}
-  document.addEventListener("click", function (e) { var a = e.target.closest && e.target.closest('a[href^="home.html"]'); if (a) { try { sessionStorage.setItem("swaram-pass", "1"); } catch (err) {} } }, true);
-</script>
-<script src="app.js?v=4"></script>
-</body>
+<body><a href="home.html">Swaram Early Years</a></body>
 </html>
