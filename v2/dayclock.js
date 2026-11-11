@@ -3,15 +3,15 @@
    Change the times, words or photos here. The times are placeholders until Swaram confirms the real ones. */
 (function () {
   var DAY = [
-    { h: 9,  m: 0,  title: "Movement play", text: "The sandpit and the garden, first thing in the morning.", img: "img/photos/day-morning.webp", alt: "Children playing in a sandpit" },
-    { h: 9,  m: 30, title: "Visual work: plan your day", text: "Children plan their own day and draw it out.", img: "img/photos/hero-3.webp", alt: "A child doing paper crafts at a small table" },
+    { h: 9,  m: 0,  title: "Movement play", text: "The sandpit and the garden, first thing in the morning.", img: "img/swaram/movement.webp", alt: "The sandpit in Swaram's garden" },
+    { h: 9,  m: 30, title: "Plan your day", text: "Children plan their own day and draw it out.", img: "img/swaram/visual-work.webp", alt: "A teacher and children planning the day on a picture board" },
     { h: 10, m: 0,  title: "Circle time", text: "Songs, stories and a hundred questions, together on the mat.", img: "img/photos/day-circle.webp", alt: "Children sitting together in a circle, laughing" },
-    { h: 10, m: 30, title: "Fruit break", text: "Fresh fruit, shared together.", img: "img/photos/iv-career.webp", alt: "A girl pouring water at a practical-life tray" },
-    { h: 11, m: 0,  title: "Sensory play", text: "Sand, water and clay to touch, pour and explore.", img: "img/photos/iv-society.webp", alt: "A group of children playing together in the sand" },
+    { h: 10, m: 30, title: "Fruit break", text: "Fresh fruit, shared together.", img: "img/swaram/fruit-break.webp", alt: "Children sharing fruit around a table" },
+    { h: 11, m: 0,  title: "Sensory play", text: "Sand, water and clay to touch, pour and explore.", img: "img/swaram/sensory-play.webp", alt: "Children's hands exploring a tub of sand" },
     { h: 11, m: 30, title: "Arts", text: "Dance, theatre, painting or drawing.", img: "img/photos/day-arts.webp", alt: "Two girls drawing at a table" },
     { h: 12, m: 15, title: "Lunch", text: "A warm meal, eaten together.", img: "img/photos/day-lunch.webp", alt: "Children eating lunch together" },
-    { h: 13, m: 0,  title: "Story time", text: "Big books and little listeners.", img: "img/photos/pg-k2.webp", alt: "A girl concentrating on a class activity" },
-    { h: 13, m: 30, title: "Free play", text: "Time to follow their own curiosity.", img: "img/photos/iv-nature.webp", alt: "Children exploring plants in a garden" }
+    { h: 13, m: 0,  title: "Story time", text: "Big books and little listeners.", img: "img/swaram/story-time.webp", alt: "A teacher reading a picture book to a circle of children" },
+    { h: 13, m: 30, title: "Free play", text: "Time to follow their own curiosity.", img: "img/swaram/free-play.webp", alt: "Children on a seesaw in the playground" }
   ];
   var COLORS = ["#FFE57A", "#CFDDFF", "#FFC9B8", "#C3EBDA", "#E8D7FF", "#FFE57A", "#FFC9B8", "#C3EBDA", "#CFDDFF"];
   var clk = document.getElementById("clk"); if (!clk) return;
