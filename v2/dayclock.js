@@ -9,7 +9,7 @@
     { h: 10, m: 30, title: "Fruit break", text: "Fresh fruit, shared together.", img: "img/swaram/fruit-break.webp", alt: "Children sharing fruit around a table" },
     { h: 11, m: 0,  title: "Sensory play", text: "Sand, water and clay to touch, pour and explore.", img: "img/swaram/sensory-play.webp", alt: "Children's hands exploring a tub of sand" },
     { h: 11, m: 30, title: "Arts", text: "Dance, theatre, painting or drawing.", img: "img/photos/day-arts.webp", alt: "Two girls drawing at a table" },
-    { h: 12, m: 15, title: "Lunch", text: "A warm meal, eaten together.", img: "img/photos/day-lunch.webp", alt: "Children eating lunch together" },
+    { h: 12, m: 15, title: "Lunch", text: "A warm meal, eaten together.", img: "img/swaram/lunch.webp", alt: "Children eating from their lunch boxes at colourful tables" },
     { h: 13, m: 0,  title: "Story time", text: "Big books and little listeners.", img: "img/swaram/story-time.webp", alt: "A teacher reading a picture book to a circle of children" },
     { h: 13, m: 30, title: "Free play", text: "Time to follow their own curiosity.", img: "img/swaram/free-play.webp", alt: "Children on a seesaw in the playground" }
   ];
