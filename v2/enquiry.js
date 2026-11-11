@@ -13,15 +13,11 @@
       return '<div class="field' + (wide ? " wide" : "") + '"><label for="' + p + id + '">' + label + '</label><input id="' + p + id + '" name="' + name + '" ' + (extra || "") + '><div class="err"></div></div>';
     }
     return '<form novalidate><div class="grid">'
-      + f("fn", "Father's name *", "father_name_tuq0x9", 'required autocomplete="name"')
-      + f("mn", "Mother's name *", "mother_name_2spxvk", "required")
-      + f("fp", "Father's phone number *", "father_phone_bf2vjx", 'type="tel" required data-phone placeholder="98765 43210" autocomplete="tel"')
-      + f("mp", "Mother's phone number", "mother_phone_556m0y", 'type="tel" data-phone placeholder="98765 43210"')
-      + f("fo", "Father's occupation", "father_occupation_grjoxo")
-      + f("mo", "Mother's occupation", "mother_occupation_ux4cjm")
-      + f("cn", "Child's name *", "child_name_axfoeh", "required")
-      + f("cd", "Child's date of birth *", "child_dob_mshtv9", 'type="date" required max="' + new Date().toISOString().slice(0, 10) + '"')
-      + f("em", "Email ID *", "email_pquo1c", 'type="email" required data-email autocomplete="email" placeholder="you@example.com"', true)
+      + f("fn", "Parent's name *", "father_name_tuq0x9", 'required autocomplete="name"')
+      + f("em", "Email ID *", "email_pquo1c", 'type="email" required data-email autocomplete="email" placeholder="you@example.com"')
+      + f("fp", "Parent's mobile number *", "father_phone_bf2vjx", 'type="tel" required data-phone placeholder="98765 43210" autocomplete="tel"')
+      + f("cn", "Name of the child *", "child_name_axfoeh", "required")
+      + f("cd", "Date of birth of the child *", "child_dob_mshtv9", 'type="date" required max="' + new Date().toISOString().slice(0, 10) + '"', true)
       + '</div><button class="send" type="submit">Schedule a call <span aria-hidden="true">→</span></button><p class="msg" role="status"></p></form>';
   }
 

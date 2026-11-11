@@ -993,3 +993,10 @@ body.home main > section, body.home .day2 { background: transparent; }
 .st-win .st-slide.on { transform: translateX(0); }
 .st-win .st-slide.out { transform: translateX(-100%); }
 .st-win .st-slide.ready { transition: none; transform: translateX(100%); }
+
+/* footer brand: never pick up the header logo's phone centring */
+.site-foot .brand.small { left: auto; top: auto; transform: none; white-space: normal; }
+@media (max-width: 560px) {
+  .sf-logo img { height: 44px; }
+  .site-foot .brand.small { font-size: 15px; }
+}
