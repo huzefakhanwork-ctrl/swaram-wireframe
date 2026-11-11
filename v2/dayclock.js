@@ -5,7 +5,7 @@
   var DAY = [
     { h: 9,  m: 0,  title: "Movement play", text: "The sandpit and the garden, first thing in the morning.", img: "img/swaram/movement.webp", alt: "The sandpit in Swaram's garden" },
     { h: 9,  m: 30, title: "Plan your day", text: "Children plan their own day and draw it out.", img: "img/swaram/visual-work.webp", alt: "A teacher and children planning the day on a picture board" },
-    { h: 10, m: 0,  title: "Circle time", text: "Songs, stories and a hundred questions, together on the mat.", img: "img/photos/day-circle.webp", alt: "Children sitting together in a circle, laughing" },
+    { h: 10, m: 0,  title: "Circle time", text: "Songs, stories and a hundred questions, together on the mat.", img: "img/swaram/circle-time.webp", alt: "A teacher and children sitting in a circle on the classroom floor" },
     { h: 10, m: 30, title: "Fruit break", text: "Fresh fruit, shared together.", img: "img/swaram/fruit-break.webp", alt: "Children sharing fruit around a table" },
     { h: 11, m: 0,  title: "Sensory play", text: "Sand, water and clay to touch, pour and explore.", img: "img/swaram/sensory-play.webp", alt: "Children's hands exploring a tub of sand" },
     { h: 11, m: 30, title: "Arts", text: "Dance, theatre, painting or drawing.", img: "img/photos/day-arts.webp", alt: "Two girls drawing at a table" },
