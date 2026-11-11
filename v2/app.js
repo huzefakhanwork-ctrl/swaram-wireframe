@@ -97,6 +97,17 @@
     if (!reduce) setInterval(morph, 520);
   }
 
+  /* ---------- Hero video: sound toggle ---------- */
+  var hv = document.getElementById("hero-video"), hs = document.getElementById("hero-sound");
+  if (hv && hs) {
+    hs.addEventListener("click", function () {
+      hv.muted = !hv.muted;
+      if (!hv.muted) { hv.play(); }
+      hs.textContent = hv.muted ? "Sound on" : "Sound off";
+      hs.setAttribute("aria-pressed", String(!hv.muted));
+    });
+  }
+
   /* ---------- Hero slideshow: next photo every 6s ---------- */
   var slides = [].slice.call(document.querySelectorAll(".hero-slides img"));
   if (slides.length > 1 && !reduce) {
