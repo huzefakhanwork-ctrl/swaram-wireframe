@@ -1,92 +1,108 @@
-/* "Let your children see the true world": the mouse position, a finger swipe, or tilting the phone scrubs
-   the video, left = sunny morning, right = night with fireflies. The words switch to light colours as it gets dark.
-   Phones: Android follows the tilt straight away; iPhone asks once, via the button (Apple requires a tap). */
+/* "Let your children see the true world" — the same behaviour as the AI Studio build (the-true-world.zip).
+   The boy follows the mouse (or a finger, or the phone's tilt after tapping the button).
+   Left = sunny morning, right = night with fireflies; the two crossfade on the way.
+   73 still frames are drawn on a canvas, the whole picture shown (no zoom), dark around it.
+   Frames 0-24: day, looking left -> right (12 = facing us). Frames 36-72: night, 72 = left, 54 = facing us, 36 = right. */
 (function () {
-  var sec = document.querySelector(".tw"), video = document.getElementById("tw-video"), btn = document.getElementById("tw-tilt");
-  if (!sec || !video) return;
-  var want = 0, now = 0, seeking = false, inView = false, raf = 0;
+  var sec = document.querySelector(".ttw"), cv = document.getElementById("ttw-canvas"), btn = document.getElementById("ttw-btn");
+  if (!sec || !cv || !cv.getContext) return;
+  var ctx = cv.getContext("2d");
+  var N = 73, DAY_START = 0, DAY_END = 24, NIGHT_LEFT = 72, NIGHT_RIGHT = 36;
+  var frames = new Array(N), target = 0.5, current = 0.5, inView = false, raf = 0, loading = false;
 
-  // ease the picture toward where the hand/mouse is, so small shakes don't jitter the video
-  function loop() {
+  function smoothstep(a, b, x) { var t = Math.max(0, Math.min(1, (x - a) / (b - a))); return t * t * (3 - 2 * t); }
+
+  // load the frames as the section comes close: centre, left and right poses first
+  function load() {
+    if (loading) return; loading = true;
+    var order = [12, 0, 24, 36, 54, 72];
+    for (var i = 0; i < N; i++) if (order.indexOf(i) < 0) order.push(i);
+    order.forEach(function (k) {
+      var im = new Image();
+      im.onload = function () { frames[k] = im; kick(); };
+      im.src = "img/true-world/f_" + (k < 10 ? "0" : "") + k + ".webp";
+    });
+  }
+  function nearest(f, lo, hi) {
+    var c = Math.max(lo, Math.min(hi, Math.round(f)));
+    if (frames[c]) return frames[c];
+    for (var d = 1; d <= N; d++) {
+      if (c + d <= hi && frames[c + d]) return frames[c + d];
+      if (c - d >= lo && frames[c - d]) return frames[c - d];
+    }
+    return null;
+  }
+  // fill the whole section (no empty space), slightly zoomed, with the boy in the middle.
+  // FX/FY: the point of the picture kept in the centre (the boy is in the middle; a little above centre keeps his head in)
+  var ZOOM = 1.08, FX = 0.5, FY = 0.45;
+  function drawContain(im, w, h, alpha) {
+    if (alpha <= 0.001) return;
+    var iw = im.naturalWidth || 1280, ih = im.naturalHeight || 720, s = Math.max(w / iw, h / ih) * ZOOM;
+    var dw = iw * s, dh = ih * s;
+    var dx = Math.min(0, Math.max(w - dw, w / 2 - dw * FX)), dy = Math.min(0, Math.max(h - dh, h / 2 - dh * FY));
+    ctx.globalAlpha = alpha;
+    ctx.drawImage(im, dx, dy, dw, dh);
+  }
+
+  function render() {
     raf = 0;
-    now += (want - now) * 0.18;
-    if (Math.abs(want - now) < 0.002) now = want;
-    sec.classList.toggle("night", now > 0.45);
-    if (video.duration && !isNaN(video.duration) && !seeking) {
-      var t = now * Math.max(0, video.duration - 0.02);
-      if (Math.abs(video.currentTime - t) > 0.015) { seeking = true; video.currentTime = t; }
-    }
-    if (now !== want || seeking) raf = requestAnimationFrame(loop);
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var w = Math.floor(cv.clientWidth * dpr), h = Math.floor(cv.clientHeight * dpr);
+    if (!w || !h) return;
+    if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
+
+    current += (target - current) * 0.16;           // smooth follow
+    if (Math.abs(target - current) < 0.0005) current = target;
+    var x = Math.max(0, Math.min(1, current));
+    var dayFloat = DAY_START + x * (DAY_END - DAY_START);
+    var nightFloat = NIGHT_LEFT - x * (NIGHT_LEFT - NIGHT_RIGHT);
+    var nightAlpha = smoothstep(0.54, 0.88, x);
+    sec.classList.toggle("night", nightAlpha > 0.35);
+
+    ctx.globalAlpha = 1; ctx.fillStyle = "#0d0d12"; ctx.fillRect(0, 0, w, h);
+    var dayImg = nearest(dayFloat, DAY_START, DAY_END), nightImg = nearest(nightFloat, NIGHT_RIGHT, NIGHT_LEFT);
+    if (dayImg && nightAlpha < 0.999) drawContain(dayImg, w, h, 1 - nightAlpha);
+    if (nightImg && nightAlpha > 0.001) drawContain(nightImg, w, h, nightAlpha);
+    ctx.globalAlpha = 1;
+
+    if (current !== target) kick();
   }
-  function go(p) { want = Math.max(0, Math.min(1, p)); if (!raf) raf = requestAnimationFrame(loop); }
-  video.addEventListener("seeked", function () { seeking = false; if (!raf) raf = requestAnimationFrame(loop); });
-  video.addEventListener("loadedmetadata", function () { go(want); });
+  function kick() { if (!raf) raf = requestAnimationFrame(render); }
+  addEventListener("resize", kick);
+  new IntersectionObserver(function (es) { inView = es[0].isIntersecting; if (inView) { load(); kick(); } }, { rootMargin: "600px 0px" }).observe(sec);
 
-
-  // colour of the page wash at the top and bottom of this section (same stops as body.home in styles.css)
-  var STOPS = [[0,"#FFF7EE"],[12,"#FDEFE4"],[24,"#F4F5EA"],[36,"#EAF3F1"],[48,"#EEF1FA"],[60,"#FBEFF2"],[72,"#FFF4E6"],[84,"#EFF5EC"],[100,"#FFF7EE"]];
-  function hex(h) { return [1, 3, 5].map(function (i) { return parseInt(h.substr(i, 2), 16); }); }
-  function washAt(y) {
-    var pct = 100 * y / Math.max(1, document.documentElement.scrollHeight);
-    for (var i = 1; i < STOPS.length; i++) if (pct <= STOPS[i][0]) {
-      var a = STOPS[i - 1], b = STOPS[i], t = (pct - a[0]) / (b[0] - a[0]), A = hex(a[1]), B = hex(b[1]);
-      return "rgb(" + A.map(function (v, k) { return Math.round(v + (B[k] - v) * t); }).join(",") + ")";
-    }
-    return STOPS[STOPS.length - 1][1];
+  // mouse and touch, across the width of the screen
+  function update(clientX) {
+    var width = innerWidth || document.documentElement.clientWidth || 1, pad = width * 0.03;
+    target = Math.max(0, Math.min(1, (clientX - pad) / (width - pad * 2)));
+    kick();
   }
-  function paintFades() {
-    var top = sec.getBoundingClientRect().top + pageYOffset;
-    var bot = innerWidth <= 720 ? top + video.getBoundingClientRect().height : top + sec.offsetHeight;
-    sec.style.setProperty("--tw-top", washAt(top));
-    sec.style.setProperty("--tw-bot", washAt(bot));
-  }
-  paintFades(); addEventListener("load", paintFades); addEventListener("resize", paintFades);
+  addEventListener("mousemove", function (e) { if (inView) update(e.clientX); }, { passive: true });
+  sec.addEventListener("touchmove", function (e) { if (e.touches.length) update(e.touches[0].clientX); }, { passive: true });
 
-  // iPhones don't load a video's frames until the page is touched: a quick play/pause on the first tap wakes it up
-  var awake = false;
-  function wake() {
-    if (awake) return; awake = true;
-    if (video.readyState < 1) { try { video.load(); } catch (e) {} }
-    try { var p = video.play(); if (p && p.then) p.then(function () { video.pause(); go(want); }).catch(function () { awake = false; }); else video.pause(); } catch (e) { awake = false; }
-  }
-  sec.addEventListener("touchstart", wake, { passive: true });
-
-  new IntersectionObserver(function (es) { inView = es[0].isIntersecting; if (inView) wake(); }, { threshold: 0.1, rootMargin: "300px 0px" }).observe(sec);
-  sec.addEventListener("click", wake);
-
-  // mouse (computers) and finger swipe (phones)
-  function fromX(x) { var w = innerWidth || 1, pad = w * 0.02; return (x - pad) / (w - pad * 2); }
-  addEventListener("mousemove", function (e) { if (inView) go(fromX(e.clientX)); }, { passive: true });
-  sec.addEventListener("touchstart", function (e) { if (e.touches.length) go(fromX(e.touches[0].clientX)); }, { passive: true });
-  sec.addEventListener("touchmove", function (e) { if (e.touches.length) go(fromX(e.touches[0].clientX)); }, { passive: true });
-
-  // phone tilt: left/right lean, also when the phone is held sideways
-  var RANGE = 22;
-  function lean(e) {
-    var a = (screen.orientation && screen.orientation.angle) || window.orientation || 0;
-    if (a === 90) return e.beta;           // landscape, top of phone to the left
-    if (a === -90 || a === 270) return -e.beta;
-    return e.gamma;                        // portrait
-  }
-  function tilt(e) {
+  // phone tilt, switched on with the button
+  var tiltActive = false, tiltSupported = "ondeviceorientation" in window;
+  function onTilt(e) {
     if (e.gamma == null) return;
-    if (!inView) return;
-    var g = lean(e);
-    go((Math.max(-RANGE, Math.min(RANGE, g)) + RANGE) / (RANGE * 2));
+    var g = Math.max(-25, Math.min(25, e.gamma));
+    target = (g + 25) / 50; kick();
   }
-  // listen straight away on every phone: Android sends tilt with no questions; iPhone only after the tap below
-  var listening = false;
-  function start() { if (listening) return; listening = true; addEventListener("deviceorientation", tilt); }
-  var isTouch = ("ontouchstart" in window) || navigator.maxTouchPoints > 0 || matchMedia("(hover: none), (pointer: coarse)").matches;
-  if (isTouch) sec.classList.add("touch");   // the tilt button always shows on touch screens
-  if (isTouch && window.DeviceOrientationEvent) start();
-  // iPhone only sends tilt after a tap: any tap on the section asks once ("Allow motion") and wakes the video
-  var asked = false;
-  sec.addEventListener("click", function () {
-    wake(); start();
-    if (!asked && window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === "function") {
-      asked = true;
-      DeviceOrientationEvent.requestPermission().catch(function () { asked = false; });
+  function label() {
+    btn.classList.toggle("on", tiltActive);
+    btn.textContent = tiltActive ? (tiltSupported ? "Tilting phone active — tilt to guide him" : "Phone tilt mode enabled") : "Tap to let him follow your phone";
+  }
+  if (btn) btn.addEventListener("click", function () {
+    if (tiltActive) { removeEventListener("deviceorientation", onTilt); tiltActive = false; return label(); }
+    if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === "function") {
+      DeviceOrientationEvent.requestPermission().then(function (p) {
+        if (p === "granted") { addEventListener("deviceorientation", onTilt); tiltActive = true; label(); }
+        else alert("Device orientation permission is required to tilt and follow.");
+      }).catch(function (err) { console.warn("Orientation permission error:", err); });
+    } else if (tiltSupported) {
+      addEventListener("deviceorientation", onTilt); tiltActive = true; label();
+    } else {
+      tiltActive = true; label();
+      setTimeout(function () { tiltActive = false; label(); }, 3000);
     }
   });
 })();

@@ -1026,3 +1026,33 @@ body.home main > section, body.home .day2 { background: transparent; }
 /* handwritten headings: leave room for tails (the y in "say") and swashes */
 .reveal-write { clip-path: inset(-40% 100% -60% -8%); }
 .reveal-write.in { clip-path: inset(-40% -10% -60% -8%); }
+
+/* "Let your children see the true world" — same as the AI Studio build (the-true-world.zip) */
+.ttw { position: relative; height: 100vh; height: 100svh; overflow: hidden; background: #0d0d12; color: #fff; user-select: none; -webkit-user-select: none; }
+.ttw-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+.ttw-main { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding: 24px; pointer-events: none; }
+.ttw-copy { max-width: 36rem; display: flex; flex-direction: column; gap: 12px; padding-bottom: 8px; }
+.ttw-title { margin: 0; text-transform: uppercase; font: 600 clamp(28px, 4vw, 50px)/.96 "Inter", sans-serif; letter-spacing: -.035em; }
+.ttw-l { display: block; }
+.ttw-w, .ttw-s, .ttw-hint { transition: color .3s, text-shadow .3s; }
+.ttw-w { color: #fff; text-shadow: 0 2px 16px rgba(0,0,0,.45); }
+.ttw-s { color: rgba(255,255,255,.82); text-shadow: 0 2px 16px rgba(0,0,0,.45); }
+.ttw.night .ttw-w { text-shadow: 0 2px 14px rgba(0,0,0,.9); }
+.ttw.night .ttw-s { color: rgba(255,255,255,.75); text-shadow: 0 2px 14px rgba(0,0,0,.9); }
+.ttw-hint { margin: 0; font: 400 12px "Inter", sans-serif; letter-spacing: -.015em; color: rgba(255,255,255,.9); text-shadow: 0 1px 10px rgba(0,0,0,.65); }
+.ttw.night .ttw-hint { color: rgba(255,255,255,.78); }
+.ttw-act { padding-top: 4px; pointer-events: auto; }
+.ttw-btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 9999px; border: 1.5px solid rgba(0,0,0,.8); background: #fff; color: #000; font: 500 12px "Inter", sans-serif; letter-spacing: -.01em; cursor: pointer; box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.1); transition: all .3s; }
+.ttw-btn:hover, .ttw-btn.on { background: #000; color: #fff; border-color: #fff; }
+.ttw-btn:active { transform: scale(.95); }
+@media (min-width: 640px) {
+  .ttw-main { padding: 32px; }
+  .ttw-copy { max-width: 42rem; gap: 16px; }
+  .ttw-hint { font-size: 14px; }
+  .ttw-act { padding-top: 8px; }
+  .ttw-btn { padding: 12px 24px; font-size: 14px; }
+}
+@media (min-width: 768px) { .ttw-main { padding: 40px; } .ttw-hint { font-size: 15px; } }
+@media (min-width: 1024px) { .ttw-main { padding: 48px; } }
+/* tall phone screens: a shorter section so the picture isn't over-zoomed (the boy stays whole) */
+@media (max-aspect-ratio: 4/5) { .ttw { height: min(100svh, 160vw); } }
