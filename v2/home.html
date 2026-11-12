@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&family=Intel+One+Mono:wght@400;700&family=JetBrains+Mono:wght@100..800&family=La+Belle+Aurore&display=swap">
-<link rel="stylesheet" href="styles.css?v=53">
+<link rel="stylesheet" href="styles.css?v=56">
 </head>
 <body class="home is-loading">
 
@@ -18,7 +18,7 @@
 <div class="loader" id="loader" aria-hidden="true">
   <div class="loader-in">
     <img class="loader-logo" src="img/swaram-mark.webp" alt="">
-    <p class="loader-word" data-type="[Swaram Early Years]"></p>
+    <p class="loader-word" data-type="Swaram Early Years"></p>
     <div class="loader-bar"><span></span><img src="img/crayon-1.webp" alt=""></div>
   </div>
 </div>
@@ -28,12 +28,12 @@
 <header class="nav show" id="nav">
   <div class="nav-left">
     <a class="nav-logo" href="#top" aria-label="Swaram Early Years, back to the top"><img src="img/swaram-mark.webp" alt=""></a>
-    <a class="brand nav-brand" href="#top" id="brand">[Swaram Early Years]</a>
+    <a class="brand nav-brand" href="#top" id="brand">Swaram Early Years</a>
   </div>
   <nav aria-label="Main" id="nav-links">
     <a href="#story">About us<img src="img/crayon-2.webp" alt=""></a>
-    <a href="#what">Our goal<img src="img/crayon-3.webp" alt=""></a>
     <a href="#programs">Programs<img src="img/crayon-1.webp" alt=""></a>
+    <a href="#what">Our goal<img src="img/crayon-3.webp" alt=""></a>
     <a href="#founder">Founder<img src="img/crayon-2.webp" alt=""></a>
     <a href="#day">A day<img src="img/crayon-1.webp" alt=""></a>
     <a href="#visit">Visit<img src="img/crayon-3.webp" alt=""></a>
@@ -48,7 +48,7 @@
 
 <!-- 01 Hero: Swaram's own film, full screen, muted until the visitor turns the sound on -->
 <section class="hero hero-full" id="top" aria-label="Swaram Early Years">
-  <video class="hero-video" id="hero-video" src="img/hero.mp4" poster="img/photos/hero-1.webp" autoplay muted loop playsinline preload="auto" aria-label="A day at Swaram Early Years"></video>
+  <video class="hero-video" id="hero-video" src="img/hero.mp4" poster="img/photos/hero-1.webp" muted loop playsinline preload="auto" aria-label="A day at Swaram Early Years"></video>
   <div class="wrap hero-copy">
     <div class="hero-actions"><button class="sound" id="hero-sound" type="button" aria-pressed="false">Sound on</button></div>
   </div>
@@ -70,71 +70,10 @@
       <a class="cta story-call fade" href="#visit" data-enquire>Schedule a call <span aria-hidden="true">&rarr;</span></a>
     </div>
     <figure class="frame pop" style="--r:3deg">
-      <svg class="scallop" viewBox="0 0 400 460" aria-hidden="true"><rect x="10" y="10" width="380" height="440" rx="2"/><rect x="24" y="24" width="352" height="412" rx="2"/></svg>
+      <svg class="scallop" viewBox="0 0 400 460" aria-hidden="true"><path d="M10 450 V200 A190 190 0 0 1 390 200 V450 Z"/><path d="M24 436 V200 A176 176 0 0 1 376 200 V436 Z"/></svg>
       <img class="frame-photo" src="img/swaram/dear-parents.webp?v=4" alt="A smiling toddler playing a xylophone with Lalith and a parent beside him" width="568" height="688" loading="lazy">
       <figcaption class="script red">This is what your child will live through at Swaram.</figcaption>
     </figure>
-  </div>
-</section>
-
-<!-- shapes for the photo blobs -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <clipPath id="blob-a" clipPathUnits="objectBoundingBox"><path d="M.08,.62 C.02,.42 .2,.3 .34,.33 C.46,.36 .5,.12 .66,.08 C.84,.03 .99,.18 .97,.38 C.95,.55 1,.7 .95,.86 C.9,1 .74,.98 .6,.96 C.44,.94 .3,1 .17,.95 C.04,.9 .12,.76 .08,.62 Z"/></clipPath>
-    <clipPath id="blob-b" clipPathUnits="objectBoundingBox"><path d="M.02,.7 C0,.5 .1,.38 .26,.36 C.4,.34 .44,.2 .6,.14 C.78,.07 .96,.12 .99,.3 C1,.5 .98,.66 .97,.8 C.96,.96 .8,.99 .62,.98 C.44,.97 .28,1 .14,.97 C.03,.94 .03,.84 .02,.7 Z"/></clipPath>
-    <clipPath id="blob-c" clipPathUnits="objectBoundingBox"><path d="M.06,.3 C.1,.1 .3,.02 .46,.12 C.56,.18 .6,.06 .74,.04 C.92,.02 1,.2 .98,.4 C.96,.58 1,.74 .94,.88 C.86,1 .66,.96 .5,.97 C.32,.98 .12,1 .05,.86 C0,.72 .03,.5 .06,.3 Z"/></clipPath>
-    <clipPath id="blob-d" clipPathUnits="objectBoundingBox"><path d="M.04,.56 C.06,.34 .22,.3 .3,.18 C.38,.04 .58,0 .72,.08 C.88,.17 .82,.36 .94,.48 C1,.58 .98,.8 .9,.9 C.8,1 .62,.95 .48,.98 C.32,1 .16,.97 .08,.86 C.01,.76 .03,.66 .04,.56 Z"/></clipPath>
-    <clipPath id="blob-cloud" clipPathUnits="objectBoundingBox"><path d="M.1,.98 C.02,.96 0,.8 .06,.68 C.0,.52 .1,.38 .24,.4 C.24,.2 .4,.06 .56,.14 C.64,.02 .84,.0 .92,.14 C1,.26 .98,.42 .94,.52 C1,.66 .98,.86 .88,.96 C.8,1 .6,.98 .44,.99 C.3,1 .18,1 .1,.98 Z"/></clipPath>
-  </defs>
-</svg>
-
-<!-- 04 How & why: VOICE -->
-<section class="sec" id="method" aria-labelledby="voice-title">
-  <div class="wrap center">
-    <h2 id="voice-title" class="headline words">Our method</h2>
-    <div class="voice" id="voice">
-      <div class="v drag-soft" style="--c:#F2B630; --r:-7deg"><b>V</b><span>Volunteer</span></div>
-      <div class="v drag-soft" style="--c:#EF6A2B; --r:5deg"><b>O</b><span>Open-mindedness</span></div>
-      <div class="v drag-soft" style="--c:#4C9C8F; --r:-3deg"><b>I</b><span>Interdependence</span></div>
-      <div class="v drag-soft" style="--c:#D33A3A; --r:8deg"><b>C</b><span>Creativity</span></div>
-      <div class="v drag-soft" style="--c:#7E6BC8; --r:-5deg"><b>E</b><span>Exploration</span></div>
-    </div>
-    <div class="why-note fade" style="--r:-1.2deg">
-      <span class="tape" aria-hidden="true"></span>
-      <p class="script red mid">Why?</p>
-      <p class="why-line">We help every child discover their inner voice.</p>
-      <svg class="waves" viewBox="0 0 70 40" aria-hidden="true"><path d="M8 20q4-10 8 0t8 0"/><path d="M30 10q6 10 0 20"/><path d="M40 4q12 16 0 32"/><path d="M50 0q16 20 0 40" opacity=".5"/></svg>
-    </div>
-  </div>
-</section>
-
-<!-- 05 Our goal: a child with four layers of relationships -->
-<section class="sec goal" id="what" aria-labelledby="what-title">
-  <div class="wrap">
-    <p class="script red mid eyebrow-s reveal-write center-t">Our goal,</p>
-    <h2 id="what-title" class="big-title words center-t">To help your child develop</h2>
-    <div class="goal-grid">
-      <div class="goal-art fade">
-        <svg class="goal-svg" viewBox="0 0 520 520" role="img" aria-label="A child in a graduation cap at the centre of four rings: self, nature, society and career">
-          <circle class="ring r-career" data-k="3" cx="260" cy="260" r="246"/>
-          <circle class="ring r-society" data-k="2" cx="260" cy="260" r="192"/>
-          <circle class="ring r-nature" data-k="1" cx="260" cy="260" r="140"/>
-          <circle class="ring r-self" data-k="0" cx="260" cy="260" r="90"/>
-          <g class="goal-dash" aria-hidden="true"><circle cx="260" cy="260" r="219"/><circle cx="260" cy="260" r="166"/><circle cx="260" cy="260" r="115"/></g>
-          <g class="kid-bob"><g class="goal-kid" transform="translate(185 158) scale(.47)"><path d="M30 380 C38 304 96 272 160 272 C224 272 282 304 290 380 Z" fill="#fff" stroke="#141414" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M124 278 Q160 304 196 278" fill="none" stroke="#141414" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M138 236 L138 280 M182 236 L182 280" fill="none" stroke="#141414" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="78" cy="182" rx="19" ry="24" fill="#fff" stroke="#141414" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="242" cy="182" rx="19" ry="24" fill="#fff" stroke="#141414" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="160" cy="172" rx="80" ry="84" fill="#fff" stroke="#141414" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M96 118 Q160 92 224 118 L222 142 Q160 120 98 142 Z" fill="#141414" stroke="#141414" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 100 L160 58 L280 100 L160 142 Z" fill="#141414" stroke="#141414" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M160 100 L250 116 L250 160" fill="none" stroke="#F2B630" stroke-width="6" stroke-linecap="round"/><rect x="241" y="156" width="18" height="26" rx="5" fill="#F2B630"/><circle cx="134" cy="196" r="6" fill="#141414"/><circle cx="186" cy="196" r="6" fill="#141414"/><path d="M160 204 q5 8 0 12" fill="none" stroke="#141414" stroke-width="5" stroke-linecap="round"/><path d="M140 228 Q160 246 180 228" fill="none" stroke="#141414" stroke-width="6" stroke-linecap="round"/></g></g>
-        </svg>
-        <span class="gtag t-self" data-k="0" style="--c:#F2B630"><img class="gt-ic" src="img/swaram/icon-self.webp" alt="">Self</span>
-        <span class="gtag t-nature" data-k="1" style="--c:#4C9C8F"><img class="gt-ic" src="img/swaram/icon-nature.webp" alt="">Nature</span>
-        <span class="gtag t-society" data-k="2" style="--c:#EF6A2B"><img class="gt-ic" src="img/swaram/icon-society.webp" alt="">Society</span>
-        <span class="gtag t-career" data-k="3" style="--c:#7E6BC8"><img class="gt-ic" src="img/swaram/icon-career.webp" alt="">Career</span>
-      </div>
-      <ol class="goal-list">
-        <li data-k="0" tabindex="0" style="--c:#F2B630;--bg:#FFF3CF"><span class="gi"><img src="img/swaram/icon-self.webp" alt=""></span><span class="gn">01</span><b>Self</b><span class="gs">Relationship with self</span></li>
-        <li data-k="1" tabindex="0" style="--c:#4C9C8F;--bg:#E2F3EC"><span class="gi"><img src="img/swaram/icon-nature.webp" alt=""></span><span class="gn">02</span><b>Nature</b><span class="gs">Relationship with nature</span></li>
-        <li data-k="2" tabindex="0" style="--c:#EF6A2B;--bg:#FFE6DA"><span class="gi"><img src="img/swaram/icon-society.webp" alt=""></span><span class="gn">03</span><b>Society</b><span class="gs">Relationship with society</span></li>
-        <li data-k="3" tabindex="0" style="--c:#7E6BC8;--bg:#EEE8FB"><span class="gi"><img src="img/swaram/icon-career.webp" alt=""></span><span class="gn">04</span><b>Career</b><span class="gs">Relationship with career</span></li>
-      </ol>
-    </div>
   </div>
 </section>
 
@@ -193,6 +132,61 @@
           <p>Play, academics, wellbeing and skill building, for full readiness for primary school.</p>
           <div class="blob blob-b pg-ph"><img src="img/photos/pg-k2.webp" alt="A girl concentrating on a class activity" loading="lazy" width="900" height="675"><span class="ph-hint" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-9 7"/></svg>K2 class</span></div>
         </article>
+    </div>
+  </div>
+</section>
+
+<!-- shapes for the photo blobs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <clipPath id="blob-a" clipPathUnits="objectBoundingBox"><path d="M.08,.62 C.02,.42 .2,.3 .34,.33 C.46,.36 .5,.12 .66,.08 C.84,.03 .99,.18 .97,.38 C.95,.55 1,.7 .95,.86 C.9,1 .74,.98 .6,.96 C.44,.94 .3,1 .17,.95 C.04,.9 .12,.76 .08,.62 Z"/></clipPath>
+    <clipPath id="blob-b" clipPathUnits="objectBoundingBox"><path d="M.02,.7 C0,.5 .1,.38 .26,.36 C.4,.34 .44,.2 .6,.14 C.78,.07 .96,.12 .99,.3 C1,.5 .98,.66 .97,.8 C.96,.96 .8,.99 .62,.98 C.44,.97 .28,1 .14,.97 C.03,.94 .03,.84 .02,.7 Z"/></clipPath>
+    <clipPath id="blob-c" clipPathUnits="objectBoundingBox"><path d="M.06,.3 C.1,.1 .3,.02 .46,.12 C.56,.18 .6,.06 .74,.04 C.92,.02 1,.2 .98,.4 C.96,.58 1,.74 .94,.88 C.86,1 .66,.96 .5,.97 C.32,.98 .12,1 .05,.86 C0,.72 .03,.5 .06,.3 Z"/></clipPath>
+    <clipPath id="blob-d" clipPathUnits="objectBoundingBox"><path d="M.04,.56 C.06,.34 .22,.3 .3,.18 C.38,.04 .58,0 .72,.08 C.88,.17 .82,.36 .94,.48 C1,.58 .98,.8 .9,.9 C.8,1 .62,.95 .48,.98 C.32,1 .16,.97 .08,.86 C.01,.76 .03,.66 .04,.56 Z"/></clipPath>
+    <clipPath id="blob-cloud" clipPathUnits="objectBoundingBox"><path d="M.1,.98 C.02,.96 0,.8 .06,.68 C.0,.52 .1,.38 .24,.4 C.24,.2 .4,.06 .56,.14 C.64,.02 .84,.0 .92,.14 C1,.26 .98,.42 .94,.52 C1,.66 .98,.86 .88,.96 C.8,1 .6,.98 .44,.99 C.3,1 .18,1 .1,.98 Z"/></clipPath>
+  </defs>
+</svg>
+
+<!-- 04 How & why: VOICE -->
+<section class="sec" id="method" aria-labelledby="voice-title">
+  <div class="wrap center">
+    <h2 id="voice-title" class="headline words">Our method</h2>
+    <div class="voice" id="voice">
+      <div class="v drag-soft" style="--c:#F2B630; --r:-7deg"><b>V</b><span>Volunteer</span></div>
+      <div class="v drag-soft" style="--c:#EF6A2B; --r:5deg"><b>O</b><span>Open-mindedness</span></div>
+      <div class="v drag-soft" style="--c:#4C9C8F; --r:-3deg"><b>I</b><span>Interdependence</span></div>
+      <div class="v drag-soft" style="--c:#D33A3A; --r:8deg"><b>C</b><span>Creativity</span></div>
+      <div class="v drag-soft" style="--c:#7E6BC8; --r:-5deg"><b>E</b><span>Exploration</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 Our goal: a child with four layers of relationships -->
+<section class="sec goal" id="what" aria-labelledby="what-title">
+  <div class="wrap">
+    <p class="script red mid eyebrow-s reveal-write center-t">Our goal,</p>
+    <h2 id="what-title" class="big-title words center-t">To help your child develop</h2>
+    <div class="goal-grid">
+      <div class="goal-art fade">
+        <svg class="goal-svg" viewBox="0 0 520 520" role="img" aria-label="A child in a graduation cap at the centre of four rings: self, nature, society and career">
+          <circle class="ring r-career" data-k="3" cx="260" cy="260" r="246"/>
+          <circle class="ring r-society" data-k="2" cx="260" cy="260" r="192"/>
+          <circle class="ring r-nature" data-k="1" cx="260" cy="260" r="140"/>
+          <circle class="ring r-self" data-k="0" cx="260" cy="260" r="90"/>
+          <g class="goal-dash" aria-hidden="true"><circle cx="260" cy="260" r="219"/><circle cx="260" cy="260" r="166"/><circle cx="260" cy="260" r="115"/></g>
+          <g class="kid-bob"><image class="goal-kid" href="img/swaram/grad-kid.webp" x="201" y="158" width="118" height="200"/></g>
+        </svg>
+        <span class="gtag t-self" data-k="0" style="--c:#F2B630"><img class="gt-ic" src="img/swaram/icon-self.webp" alt="">Self</span>
+        <span class="gtag t-nature" data-k="1" style="--c:#4C9C8F"><img class="gt-ic" src="img/swaram/icon-nature.webp" alt="">Nature</span>
+        <span class="gtag t-society" data-k="2" style="--c:#EF6A2B"><img class="gt-ic" src="img/swaram/icon-society.webp" alt="">Society</span>
+        <span class="gtag t-career" data-k="3" style="--c:#7E6BC8"><img class="gt-ic" src="img/swaram/icon-career.webp" alt="">Career</span>
+      </div>
+      <ol class="goal-list">
+        <li data-k="0" tabindex="0" style="--c:#F2B630;--bg:#FFF3CF"><span class="gi"><img src="img/swaram/icon-self.webp" alt=""></span><span class="gn">01</span><b>Self</b><span class="gs">Relationship with self</span></li>
+        <li data-k="1" tabindex="0" style="--c:#4C9C8F;--bg:#E2F3EC"><span class="gi"><img src="img/swaram/icon-nature.webp" alt=""></span><span class="gn">02</span><b>Nature</b><span class="gs">Relationship with nature</span></li>
+        <li data-k="2" tabindex="0" style="--c:#EF6A2B;--bg:#FFE6DA"><span class="gi"><img src="img/swaram/icon-society.webp" alt=""></span><span class="gn">03</span><b>Society</b><span class="gs">Relationship with society</span></li>
+        <li data-k="3" tabindex="0" style="--c:#7E6BC8;--bg:#EEE8FB"><span class="gi"><img src="img/swaram/icon-career.webp" alt=""></span><span class="gn">04</span><b>Career</b><span class="gs">Relationship with career</span></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -282,10 +276,8 @@
 <!-- 11 Visit -->
 <section class="sec visit" id="visit" aria-labelledby="visit-title">
   <div class="wrap visit-grid">
-    <img class="postbox pop" src="img/postbox.webp" alt="" style="--r:-2deg">
     <div class="visit-copy">
-      <h2 id="visit-title" class="script huge reveal-write">Schedule a call,<br>&nbsp;&nbsp;&nbsp;come say hello!</h2>
-      <p class="fade">Share a few details and we'll call you to plan your visit.</p>
+      <h2 id="visit-title" class="script huge reveal-write">Come say hello!</h2>
       <p class="kv fade"><i class="script red">Where:</i> #263, BEML Layout 3rd Stage, Rajarajeshwari Nagar, Bengaluru 560098</p>
       <p class="kv fade"><i class="script red">Who:</i> children aged 2 to 5</p>
       <p class="kv fade"><i class="script red">Follow:</i> <a href="https://www.instagram.com/lalithdhanush/" target="_blank" rel="noopener">@lalithdhanush</a></p>
@@ -293,8 +285,9 @@
         <iframe title="Map: #263, BEML Layout 3rd Stage, Rajarajeshwari Nagar, Bengaluru" src="https://www.google.com/maps?q=12.9200912,77.5184101&amp;z=17&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
         <a class="map-open" href="https://maps.app.goo.gl/qQpeKcWLgPnXxhs28" target="_blank" rel="noopener">Open in Google Maps <span aria-hidden="true">↗</span></a>
       </div>
-      <a class="cta visit-call fade" href="#visit" data-enquire>Schedule a call <span aria-hidden="true">&rarr;</span></a>
+      <div class="wform visit-form fade"></div>
     </div>
+    <img class="postbox pop" src="img/postbox.webp" alt="" style="--r:-2deg">
   </div>
 </section>
 
@@ -303,7 +296,7 @@
 <footer class="site-foot">
   <div class="wrap sf-top">
     <div class="sf-brand">
-      <a class="sf-logo" href="#top" aria-label="Swaram Early Years, back to the top"><img src="img/swaram-mark.webp" alt=""><span class="brand small">[<b>S</b>wa<b>ra</b>m <b>E</b>ar<b>ly</b> Y<b>ea</b>rs]</span></a>
+      <a class="sf-logo" href="#top" aria-label="Swaram Early Years, back to the top"><img src="img/swaram-mark.webp" alt=""><span class="brand small"><b>S</b>wa<b>ra</b>m <b>E</b>ar<b>ly</b> Y<b>ea</b>rs</span></a>
       <p class="sf-tag">Where every child discovers their own voice</p>
     </div>
     <div class="sf-visit">
@@ -320,8 +313,8 @@
   </div>
 </footer>
 
-<script src="app.js?v=10"></script>
-<script src="enquiry.js?v=3"></script>
+<script src="app.js?v=11"></script>
+<script src="enquiry.js?v=4"></script>
 <script src="truewld.js?v=7"></script>
 <script src="founder.js?v=1"></script>
 <script src="piano.js?v=1"></script>

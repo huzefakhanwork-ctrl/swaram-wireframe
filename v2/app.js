@@ -37,7 +37,7 @@
   if (loader) {
     var word = loader.querySelector(".loader-word");
     var bar = loader.querySelector(".loader-bar");
-    var text = word.dataset.type, bold = [1, 4, 5, 8, 11, 12, 15, 16];
+    var text = word.dataset.type, bold = [0, 3, 4, 7, 10, 11, 14, 15];
     var n = 0, start = performance.now(), MIN = reduce ? 0 : 2200, loaded = document.readyState === "complete";
     addEventListener("load", function () { loaded = true; });
     var tick = function (t) {
@@ -53,6 +53,7 @@
       setTimeout(function () {
         loader.classList.add("done");
         document.body.classList.remove("is-loading");
+        var hvid = document.getElementById("hero-video"); if (hvid) { try { hvid.currentTime = 0; var pp = hvid.play(); if (pp && pp.catch) pp.catch(function () {}); } catch (e) {} }
         if (!cover) watch();          // main page: start the scroll-in animations once the loader lifts
         setTimeout(function () { if (cover) cover.classList.add("ready"); }, 300);
       }, 250);

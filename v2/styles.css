@@ -1004,3 +1004,25 @@ body.home main > section, body.home .day2 { background: transparent; }
 /* Hero video: the film carries its own words, so the headline is for screen readers only */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .hero-full .hero-actions { justify-content: flex-end; }
+
+/* 2026-11-12: Dear Parents dome frame */
+.frame .frame-photo { left: 6%; top: 5.2%; width: 88%; height: 89.6%; border-radius: 50% 50% 0 0 / 42.7% 42.7% 0 0; }
+.scallop path { stroke-width: 5; }
+.scallop path + path { stroke-width: 3; }
+
+/* last section: the postbox on the left, in the middle; the form on the right */
+.visit-grid { grid-template-columns: 300px 1fr; align-items: center; }
+.visit-grid .postbox { order: -1; }
+.visit-grid .postbox { align-self: center; justify-self: center; }
+.visit-form { margin-top: 26px; max-width: 560px; }
+@media (max-width: 900px) {
+  .visit-grid { grid-template-columns: 1fr; }
+  .visit-grid .postbox { order: -1; }
+}
+
+/* Our goal: the graduation kid */
+.goal-kid { filter: drop-shadow(0 6px 10px rgba(0,0,0,.12)); }
+
+/* handwritten headings: leave room for tails (the y in "say") and swashes */
+.reveal-write { clip-path: inset(-40% 100% -60% -8%); }
+.reveal-write.in { clip-path: inset(-40% -10% -60% -8%); }

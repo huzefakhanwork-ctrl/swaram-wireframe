@@ -101,11 +101,11 @@
     e.preventDefault(); open();
   });
 
-  // once per visit at 50% scroll (not while the preloader is showing; opening it from a button doesn't count)
+  // once per visit, right after the "Dear Parents" section (not while the preloader is showing; opening it from a button doesn't count)
   function seen() { try { return sessionStorage.getItem("swq-auto") === "1"; } catch (e) { return false; } }
   addEventListener("scroll", function () {
     if (seen() || box.classList.contains("open") || document.body.classList.contains("is-loading")) return;
-    var h = document.documentElement.scrollHeight - innerHeight;
-    if (h > 0 && pageYOffset / h >= 0.5) { try { sessionStorage.setItem("swq-auto", "1"); } catch (e) {} open(); }
+    var dp = document.getElementById("story"); if (!dp) return;
+    if (dp.getBoundingClientRect().bottom < innerHeight * 0.4) { try { sessionStorage.setItem("swq-auto", "1"); } catch (e) {} open(); }
   }, { passive: true });
 })();
