@@ -48,7 +48,8 @@
 
 <!-- 01 Hero: Swaram's own film, full screen, muted until the visitor turns the sound on -->
 <section class="hero hero-full" id="top" aria-label="Swaram Early Years">
-  <video class="hero-video" id="hero-video" src="img/hero.mp4" poster="img/photos/hero-1.webp" muted loop playsinline preload="auto" aria-label="A day at Swaram Early Years"></video>
+  <video class="hero-video" id="hero-video" data-src="img/hero.mp4" data-poster="img/photos/hero-1.webp" data-src-phone="img/hero-mobile.mp4" data-poster-phone="img/hero-mobile-poster.jpg" muted loop playsinline preload="auto" aria-label="A day at Swaram Early Years"></video>
+  <script>/* phones and other tall screens get the portrait (9:16) film, wider screens the landscape one */(function(){var v=document.getElementById("hero-video");if(!v)return;var p=matchMedia("(max-aspect-ratio: 4/5)").matches;v.poster=p?v.dataset.posterPhone:v.dataset.poster;v.src=p?v.dataset.srcPhone:v.dataset.src;})();</script>
   <div class="wrap hero-copy">
     <div class="hero-actions"><button class="sound" id="hero-sound" type="button" aria-pressed="false">Sound on</button></div>
   </div>
