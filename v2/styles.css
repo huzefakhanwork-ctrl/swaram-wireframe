@@ -1056,3 +1056,8 @@ body.home main > section, body.home .day2 { background: transparent; }
 @media (min-width: 1024px) { .ttw-main { padding: 48px; } }
 /* tall phone screens: a shorter section so the picture isn't over-zoomed (the boy stays whole) */
 @media (max-aspect-ratio: 4/5) { .ttw { height: min(100svh, 160vw); } }
+
+/* Our goal: the pills always wrap their whole word (Society was spilling out on phones) */
+.gtag { width: max-content; }
+.gtag .gt-ic { flex: none; }
+@media (max-width: 820px) { .t-society { left: 79%; } .t-nature { left: 27%; } }
